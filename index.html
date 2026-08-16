@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#12343f" />
+    <title>Managalas Mining Site Survey — Photo Record</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2312657d'/%3E%3Ccircle cx='8' cy='9' r='3' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3Cpath d='M3 6h3l1-1.5h2L10 6h3' fill='none' stroke='%23fff' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Managalas Survey" />
+  </head>
+  <body>
+    <main id="app" aria-live="polite">
+      <p class="empty">Loading…</p>
+    </main>
+    <noscript>
+      <p class="empty">This survey tool needs JavaScript enabled.</p>
+    </noscript>
+    <script type="module" src="js/app.js"></script>
+    <script>
+      // Registered outside the module so a service-worker failure (private
+      // browsing, unsupported browser) never stops the app itself loading.
+      if ('serviceWorker' in navigator) {
+        addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
