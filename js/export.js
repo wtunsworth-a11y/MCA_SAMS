@@ -212,6 +212,68 @@ function readme(record) {
   ].join('\n');
 }
 
+/**
+ * Can this device hand a file to the OS share sheet? Chrome on Android and
+ * Safari on iOS can; most desktop browsers cannot, and fall back to a download.
+ */
+export function canShareFiles() {
+  if (!navigator.canShare || !navigator.share) return false;
+  try {
+    return navigator.canShare({
+      files: [new File([new Blob(['x'])], 'probe.zip', { type: 'application/zip' })],
+    });
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Hand the bundle to the enumerator to send however they choose — WhatsApp,
+ * email, Drive, a cable. The share sheet is the point: in the field there is no
+ * single right channel, and the app should not pick one.
+ *
+ * Falls back to a download where sharing files is unsupported or refused.
+ * Returns 'shared', 'cancelled' or 'downloaded'.
+ */
+export async function deliver({ blob, filename, record }) {
+  const file = new File([blob], filename, { type: 'application/zip' });
+
+  if (canShareFiles()) {
+    try {
+      await navigator.share({
+        files: [file],
+        title: filename,
+        text:
+          `${record.survey.instrument}\n` +
+          `Site: ${record.survey.siteName}\n` +
+          `Reference: ${record.survey.reference || '(none)'}\n` +
+          `${record.survey.questionsAnswered} of ${record.survey.questionsTotal} questions, ` +
+          `${record.photographs.length} photographs.`,
+      });
+      return 'shared';
+    } catch (error) {
+      // A cancelled share sheet is a choice, not a failure — don't then dump
+      // the file into downloads behind the enumerator's back.
+      if (error && error.name === 'AbortError') return 'cancelled';
+    }
+  }
+
+  download(blob, filename);
+  return 'downloaded';
+}
+
+export function download(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  // Large bundles keep writing after the click; hold the URL a while.
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+}
+
 /** Build the delivery bundle for one survey. */
 export async function buildBundle(survey, photos) {
   const record = buildRecord(survey, photos);

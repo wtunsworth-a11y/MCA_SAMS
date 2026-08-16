@@ -507,3 +507,30 @@ input,
   font-variant-numeric: tabular-nums;
   word-break: break-word;
 }
+
+/* -- delivery -- */
+
+.deliver {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  padding: 0.2rem 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.deliver-status {
+  margin: 0 0 2rem;
+  text-align: right;
+}
+
+.deliver-status:empty {
+  display: none;
+}

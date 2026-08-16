@@ -2,7 +2,7 @@ import { SECTIONS, SECTIONS_BY_ID, ALL_QUESTIONS, NUMBERED_COUNT } from './quest
 import { SUBJECTS, SUBJECTS_BY_ID, TOTAL_MIN_PHOTOS } from './photo-subjects.js';
 import * as store from './storage.js';
 import { prepare, objectUrl, releaseUrls, detachedUrl, revoke } from './photos.js';
-import { buildBundle, photoIds } from './export.js';
+import { buildBundle, deliver, download, canShareFiles, photoIds } from './export.js';
 
 const root = document.getElementById('app');
 
@@ -220,12 +220,22 @@ async function viewSurvey(surveyId) {
           class: 'muted',
           text: `${photosTotal} photograph${photosTotal === 1 ? '' : 's'} attached`,
         }),
-        el('button', {
-          class: 'primary',
-          text: 'Export survey + photos',
-          onclick: (event) => exportSurvey(surveyId, event.currentTarget),
-        }),
+        el('div', { class: 'deliver' }, [
+          el('button', {
+            class: 'primary',
+            text: canShareFiles() ? 'Send survey + photos' : 'Download survey + photos',
+            onclick: (event) => exportSurvey(surveyId, event.currentTarget, 'share'),
+          }),
+          canShareFiles()
+            ? el('button', {
+                class: 'link-button',
+                text: 'Save to this device instead',
+                onclick: (event) => exportSurvey(surveyId, event.currentTarget, 'download'),
+              })
+            : null,
+        ]),
       ]),
+      el('p', { class: 'muted deliver-status', id: 'deliver-status' }),
     ])
   );
 }
@@ -649,24 +659,43 @@ function openViewer(photos, startIndex, ids = new Map()) {
 
 /* ------------------------------------------------------------- delivery -- */
 
-async function exportSurvey(surveyId, button) {
+async function exportSurvey(surveyId, button, mode) {
+  const status = document.getElementById('deliver-status');
   const label = button && button.textContent;
+  const say = (text, kind = 'muted deliver-status') => {
+    if (status) {
+      status.className = kind;
+      status.textContent = text;
+    }
+  };
+
   if (button) {
     button.disabled = true;
     button.textContent = 'Packaging…';
   }
+  say('Building the bundle — large photo sets take a moment.');
+
   try {
     const survey = await store.getSurvey(surveyId);
     const photos = await store.listPhotos(surveyId);
-    const { blob, filename } = await buildBundle(survey, photos);
+    const bundle = await buildBundle(survey, photos);
+    const size = (bundle.blob.size / (1024 * 1024)).toFixed(1);
+    const summary = `${bundle.filename} · ${size} MB · ${photos.length} photograph${
+      photos.length === 1 ? '' : 's'
+    }`;
 
-    const url = URL.createObjectURL(blob);
-    const link = el('a', { href: url, download: filename });
-    document.body.append(link);
-    link.click();
-    link.remove();
-    // Large bundles keep downloading after the click; hold the URL a while.
-    setTimeout(() => URL.revokeObjectURL(url), 30000);
+    if (mode === 'download') {
+      download(bundle.blob, bundle.filename);
+      say(`Saved to this device — ${summary}`, 'ok deliver-status');
+      return;
+    }
+
+    const outcome = await deliver(bundle);
+    if (outcome === 'shared') say(`Sent — ${summary}`, 'ok deliver-status');
+    else if (outcome === 'cancelled') say('Sending cancelled. Nothing left the device.');
+    else say(`Saved to this device — ${summary}`, 'ok deliver-status');
+  } catch (error) {
+    say(`Could not build the bundle: ${error.message}`, 'warn deliver-status');
   } finally {
     if (button) {
       button.disabled = false;

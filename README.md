@@ -145,6 +145,22 @@ The ZIP is written by [`js/zip.js`](js/zip.js), a small store-only encoder —
 no dependency, and JPEG data would not compress anyway. Images go in as their
 original bytes.
 
+### Sending it
+
+**Send survey + photos** hands the ZIP to the phone's own share sheet, so the
+enumerator picks the channel — WhatsApp, email, Drive, Bluetooth, whatever is
+reachable that day. In the field there is no single right channel and the app
+does not pick one.
+
+Where the Web Share API cannot take files (most desktop browsers), the button
+reads **Download survey + photos** and saves it instead. On a phone a *Save to
+this device instead* option sits beneath, for when there is no signal at all and
+the file goes off by cable later.
+
+Cancelling the share sheet leaves nothing behind — the file is not quietly
+written to downloads. The status line under the button states what happened and
+the bundle's size.
+
 ## Layout
 
 | Path | Purpose |
