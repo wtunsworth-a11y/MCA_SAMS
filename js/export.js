@@ -3,6 +3,7 @@
 // sheet names the image files, and each image file's name carries the survey
 // reference and the subject it belongs to.
 
+import { CONFIG } from './config.js';
 import { SECTIONS, ALL_QUESTIONS } from './questions.js';
 import { SUBJECTS } from './photo-subjects.js';
 import { zip } from './zip.js';
@@ -128,7 +129,9 @@ export function buildRecord(survey, photos) {
       enumerator: survey.surveyor || null,
       createdAt: new Date(survey.createdAt).toISOString(),
       exportedAt: new Date().toISOString(),
-      instrument: 'Managalas Conservation Area — Small-Scale Mining Site & Miner Survey',
+      instrument: CONFIG.instrument,
+      project: CONFIG.project,
+      app_version: CONFIG.appVersion,
       questionsAnswered: ALL_QUESTIONS.filter((q) => q.n && isAnswered(answers, q)).length,
       questionsTotal: ALL_QUESTIONS.filter((q) => q.n).length,
     },
@@ -185,11 +188,13 @@ function readme(record) {
   const shortfall = record.photoSubjects.filter((s) => s.taken < s.required);
   return [
     record.survey.instrument,
+    record.survey.project,
     '',
     `Site:       ${record.survey.siteName}`,
     `Reference:  ${record.survey.reference || '(none)'}`,
     `Enumerator: ${record.survey.enumerator || '(none)'}`,
     `Exported:   ${record.survey.exportedAt}`,
+    `App version: ${record.survey.app_version}`,
     '',
     `Questions answered: ${record.survey.questionsAnswered} of ${record.survey.questionsTotal}`,
     `Photographs:        ${record.photographs.length}`,

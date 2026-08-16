@@ -15,6 +15,8 @@
 //   follow: {...}  a conditional sub-question; `when` lists the parent answers
 //                  that reveal it, or is omitted for "always show"
 
+import { CONFIG } from './config.js';
+
 const YES_NO = ['Yes', 'No'];
 
 export const SECTIONS = [
@@ -22,12 +24,7 @@ export const SECTIONS = [
     id: 'consent',
     number: 0,
     title: 'Informed consent',
-    preamble:
-      'Hello. My name is ____, representing the survey team. We are conducting ' +
-      'a survey on small-scale mining in the Managalas Conservation Area. Your ' +
-      'participation is voluntary, and all responses will remain strictly ' +
-      'confidential. You may choose to skip any question or stop the interview ' +
-      'at any time. The survey takes approximately 30–45 minutes.',
+    preamble: CONFIG.consentScript,
     questions: [
       { id: 'c1', label: 'Name of person taking consent', type: 'text' },
       {

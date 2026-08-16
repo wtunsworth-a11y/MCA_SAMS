@@ -1,7 +1,50 @@
-# MCA_SAMS
+# MCA Small-Scale Mining Survey — Offline PWA
 
-The **Managalas Conservation Area small-scale mining site & miner survey** as an
-offline-capable web app.
+A fully offline, installable web app that digitises the **Managalas
+Conservation Area Small-Scale Mining Site & Miner Survey** for field use in the
+Managalas Conservation Area, Oro Province, Papua New Guinea.
+
+Built for the Managalas and Oro Province Project (MOPP) — CIFOR-ICRAF, funded by
+the European Union.
+
+- **No internet needed during an interview.** Everything runs on the device.
+- **No backend, no login, no accounts.** Data stays on the phone until someone
+  sends it deliberately.
+- **No build tools required to run it.** Plain HTML/CSS/JavaScript.
+
+> **New here?** If you are an enumerator, read
+> [`docs/ENUMERATOR_SETUP.md`](docs/ENUMERATOR_SETUP.md). If you are the
+> supervisor publishing it and collecting the data, read
+> [`docs/SUPERVISOR_GUIDE.md`](docs/SUPERVISOR_GUIDE.md).
+
+---
+
+## Two ways to run it
+
+Two builds of the same app. Choose by how you distribute it.
+
+| | **Hosted (recommended for fieldwork)** | **Single file (easy to email)** |
+|---|---|---|
+| What you share | A web link (e.g. GitHub Pages) | One file: `dist/MCA_SAMS_Survey.html` |
+| First use | Open the link once **while online**, then "Add to Home Screen" | Open the file in a phone browser |
+| Offline after that | Yes — installs like an app, icon on home screen | Yes |
+| Storage reliability | Most reliable (proper `https://` origin) | Reliable **as long as the file is not moved or renamed** |
+| Best for | Real fieldwork | Quick demos, a backup copy |
+
+Both store surveys locally in IndexedDB and both produce the same export bundle.
+
+### Rebuild the single file
+
+`dist/MCA_SAMS_Survey.html` is generated from `js/` and `css/`. Regenerate it
+whatever you edit there:
+
+```sh
+node build.js
+```
+
+---
+
+## What this replaces
 
 The paper form
 ([`incoming/Managalas_Small_Scale_Mining_Survey(1).pdf`](incoming/Managalas_Small_Scale_Mining_Survey%281%29.pdf))
@@ -14,21 +57,21 @@ photographic schedule the paper form leaves undefined.
 No dependencies, no build step. It installs to a phone home screen and runs with
 no signal; answers and photographs are held in IndexedDB on the device.
 
-## Running it
+## Running the hosted build locally
 
-Serve the folder over HTTP — opening `index.html` with `file://` will not work,
-because the app uses ES modules.
+Serve the folder over HTTP — `index.html` loads `js/` as ES modules, which a
+`file://` page cannot do. (The single-file build in `dist/` has no such limit.)
 
 ```sh
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-Any static host works, GitHub Pages included.
+Publishing to GitHub Pages is covered in
+[`docs/SUPERVISOR_GUIDE.md`](docs/SUPERVISOR_GUIDE.md); a manual-dispatch
+workflow sits in [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
 
 ## Installing it on a phone
-
-Opened over HTTPS, the app can be installed and launched like any other app.
 
 - **Android / Chrome:** open the link, then menu → *Add to Home screen*.
 - **iPhone / Safari:** open the link, then Share → *Add to Home Screen*.
@@ -167,6 +210,7 @@ the bundle's size.
 | --- | --- |
 | `index.html` | Page shell |
 | `css/styles.css` | Styling, including a dark scheme |
+| `js/config.js` | App version, attribution, consent script |
 | `js/questions.js` | The survey instrument — sections, questions, options, logic |
 | `js/photo-subjects.js` | Photographic schedule and per-subject minimums |
 | `js/storage.js` | IndexedDB persistence for surveys, answers and photographs |
@@ -177,7 +221,22 @@ the bundle's size.
 | `sw.js` | Service worker — offline app shell |
 | `manifest.webmanifest` | PWA manifest |
 | `icons/` | Home-screen icons |
+| `build.js` | Builds `dist/MCA_SAMS_Survey.html`, the single-file version |
+| `docs/` | Enumerator setup and supervisor guides |
+| `received_data/` | Where exports go — git-ignored; see its README |
 | `incoming/` | Source material — the paper form; not used at runtime |
+
+## Changing the survey
+
+| To change | Edit |
+| --- | --- |
+| Questions, wording, options, conditional logic | `js/questions.js` |
+| Photo subjects and minimum counts | `js/photo-subjects.js` |
+| Consent script, app version, attribution | `js/config.js` |
+
+Bump `appVersion` in `js/config.js` when the instrument changes — it is written
+into every export as `app_version`, so a record can be traced to the build that
+produced it. Then re-run `node build.js`.
 
 ## Not yet covered
 
