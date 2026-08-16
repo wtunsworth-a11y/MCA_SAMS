@@ -1,62 +1,73 @@
-// Survey locations ("places").
+// Photographic schedule for the Managalas small-scale mining survey.
 //
-// Each location defines the minimum number of photographs a surveyor must
-// capture before that location can be signed off. The minimum is what the app
-// enforces; `guidance` is advisory text shown to the surveyor on site.
+// The paper form (incoming/Managalas_Small_Scale_Mining_Survey(1).pdf) records
+// photographs only as "Photographs taken: Yes/No" plus a free-text list of photo
+// IDs, which leaves what to photograph up to each enumerator. This schedule
+// makes the expectation explicit: each subject below declares the minimum number
+// of photographs required before it counts as complete.
 //
-// To add a new place, append an entry here — nothing else needs to change.
+// `guidance` is advisory text shown to the enumerator on site. Question numbers
+// refer to the paper form.
+//
+// To add a subject, append an entry here — nothing else needs to change.
 
 export const LOCATIONS = [
   {
-    id: 'main-entrance',
-    name: 'Main Entrance',
+    id: 'site',
+    name: 'Mining Site',
     minPhotos: 4,
     guidance:
-      'Approach, threshold, door furniture and any signage. Include one wide ' +
-      'shot showing the entrance in context.',
+      'A wide shot establishing the site in its landscape, the working face ' +
+      'or pit, the deposit being worked (Q19), and where the operation meets ' +
+      'water — river, stream or discharge point (Q50, Q51). Include tailings ' +
+      'or waste material if stored on site (Q52). Record the GPS position ' +
+      'alongside these.',
   },
   {
-    id: 'reception',
-    name: 'Reception',
-    minPhotos: 3,
-    guidance: 'Desk, waiting area and the route from the entrance.',
+    id: 'equipment',
+    name: 'Equipment',
+    minPhotos: 8,
+    guidance:
+      'Photograph every item separately — gold pan, shovel and pick, sluice ' +
+      'box, water pump, highbanker, trommel, metal detector and anything else ' +
+      'in use (Q25). Include processing equipment as objects: shaking table, ' +
+      'crushing or grinding gear, retort if one is present (Q33, Q40). Where ' +
+      'an item is hired rather than owned (Q26), note it below. This subject ' +
+      'needs more photographs than any other — one frame per item, not one ' +
+      'frame of the pile.',
   },
   {
-    id: 'circulation',
-    name: 'Corridors & Circulation',
+    id: 'processing',
+    name: 'Processing Activity',
     minPhotos: 4,
     guidance:
-      'Each corridor run, junctions, and anything narrowing the clear width.',
+      'The recovery process actually underway, not the idle equipment (Q33). ' +
+      'Photograph material being fed, crushed or ground; gravity ' +
+      'concentration in progress — panning, sluicing or the shaking table ' +
+      'running; and the tailings or wash water leaving the process. Where ' +
+      'mercury is used, record where it is handled and where amalgam is ' +
+      'burned, and whether a retort is fitted (Q34–Q40).',
   },
   {
-    id: 'accessible-wc',
-    name: 'Accessible WC',
-    minPhotos: 5,
+    id: 'gold',
+    name: 'Gold Recovered',
+    minPhotos: 2,
     guidance:
-      'Door and approach, transfer space, grab rails, alarm cord and basin.',
+      'The gold itself — alluvial, fine, coarse, nuggets or gold-bearing ore ' +
+      '(Q27). Include something for scale in the frame, a coin or rule. Add a ' +
+      'shot of it being weighed or of the sale record where either is ' +
+      'available (Q29, Q67, Q68).',
   },
   {
-    id: 'stairwell',
-    name: 'Stairwell',
-    minPhotos: 4,
-    guidance: 'Each flight, handrails, nosings and landing.',
-  },
-  {
-    id: 'car-park',
-    name: 'Car Park',
-    minPhotos: 4,
-    guidance: 'Bay markings, dropped kerbs, surface condition and the route in.',
-  },
-  {
-    id: 'plant-room',
-    name: 'Plant Room',
-    minPhotos: 12,
+    id: 'rehabilitation',
+    name: 'Rehabilitation',
+    minPhotos: 1,
     guidance:
-      'Photograph every item of plant individually, plus a legible shot of ' +
-      'each asset nameplate, serial number and service label. Add general ' +
-      'shots of each wall and the access route. This location needs ' +
-      'substantially more photographs than the rest of the survey — budget ' +
-      'extra time on site for it.',
+      'Required whether or not any rehabilitation has been done (Q58, Q59). ' +
+      'If work has taken place, photograph it — backfilled pits, replaced ' +
+      'topsoil, replanting, stabilised riverbanks or restored drainage. If ' +
+      'nothing has been done, photograph the un-rehabilitated ground anyway: ' +
+      'the absence of rehabilitation is itself the record.',
   },
 ];
 

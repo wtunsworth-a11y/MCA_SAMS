@@ -77,12 +77,12 @@ async function viewSurveyList() {
   show(
     el('section', {}, [
       el('header', { class: 'top' }, [
-        el('h1', { text: 'Surveys' }),
+        el('h1', { text: 'Mining site surveys' }),
         el('button', { class: 'primary', text: 'New survey', onclick: viewNewSurvey }),
       ]),
       surveys.length
         ? el('ul', { class: 'list' }, items)
-        : el('p', { class: 'empty', text: 'No surveys yet. Start one to begin capturing photographs.' }),
+        : el('p', { class: 'empty', text: 'No surveys yet. Start one to begin the photographic record.' }),
     ])
   );
 }
@@ -104,17 +104,19 @@ function viewNewSurvey() {
     },
   });
 
+  // Field names follow the paper form: Q3 mining site, Q1 survey ID, and the
+  // enumerator named in the observation block on the final page.
   form.append(
     el('label', {}, [
-      el('span', { text: 'Site name' }),
+      el('span', { text: 'Name of mining site' }),
       el('input', { name: 'siteName', required: 'required', autocomplete: 'off' }),
     ]),
     el('label', {}, [
-      el('span', { text: 'Reference' }),
+      el('span', { text: 'Survey ID' }),
       el('input', { name: 'reference', autocomplete: 'off' }),
     ]),
     el('label', {}, [
-      el('span', { text: 'Surveyor' }),
+      el('span', { text: 'Enumerator' }),
       el('input', { name: 'surveyor', autocomplete: 'off' }),
     ]),
     el('div', { class: 'actions' }, [
@@ -125,7 +127,7 @@ function viewNewSurvey() {
 
   show(
     el('section', {}, [
-      el('header', { class: 'top' }, [el('h1', { text: 'New survey' })]),
+      el('header', { class: 'top' }, [el('h1', { text: 'New mining site survey' })]),
       form,
     ])
   );
@@ -170,11 +172,11 @@ async function viewSurvey(surveyId) {
       outstanding.length
         ? el('p', {
             class: 'warn',
-            text: `${outstanding.length} location${
+            text: `${outstanding.length} subject${
               outstanding.length === 1 ? '' : 's'
             } still below the required photo count.`,
           })
-        : el('p', { class: 'ok', text: 'All locations have their required photographs.' }),
+        : el('p', { class: 'ok', text: 'All subjects have their required photographs.' }),
       el('ul', { class: 'list' }, rows),
     ])
   );
