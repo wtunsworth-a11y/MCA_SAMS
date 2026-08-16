@@ -9,12 +9,19 @@
 // `guidance` is advisory text shown to the enumerator on site. Question numbers
 // refer to the paper form.
 //
+// `code` prefixes the photo IDs written into the export and shown on screen, so
+// an image file can be traced back to its subject without opening it.
+// `evidences` lists the question numbers the subject bears on, which is what
+// ties the photographs to the answer sheet in the delivered bundle.
+//
 // To add a subject, append an entry here — nothing else needs to change.
 
 export const SUBJECTS = [
   {
     id: 'site',
     name: 'Mining Site',
+    code: 'SITE',
+    evidences: [19, 50, 51, 52],
     minPhotos: 4,
     guidance:
       'A wide shot establishing the site in its landscape, the working face ' +
@@ -26,6 +33,8 @@ export const SUBJECTS = [
   {
     id: 'equipment',
     name: 'Equipment',
+    code: 'EQP',
+    evidences: [25, 26, 33, 40],
     minPhotos: 8,
     guidance:
       'Photograph every item separately — gold pan, shovel and pick, sluice ' +
@@ -39,6 +48,8 @@ export const SUBJECTS = [
   {
     id: 'processing',
     name: 'Processing Activity',
+    code: 'PROC',
+    evidences: [33, 34, 35, 38, 39, 40],
     minPhotos: 4,
     guidance:
       'The recovery process actually underway, not the idle equipment (Q33). ' +
@@ -51,6 +62,8 @@ export const SUBJECTS = [
   {
     id: 'gold',
     name: 'Gold Recovered',
+    code: 'GOLD',
+    evidences: [27, 29, 67],
     minPhotos: 2,
     guidance:
       'The gold itself — alluvial, fine, coarse, nuggets or gold-bearing ore ' +
@@ -61,6 +74,8 @@ export const SUBJECTS = [
   {
     id: 'rehabilitation',
     name: 'Rehabilitation',
+    code: 'REHAB',
+    evidences: [58, 59, 60],
     minPhotos: 1,
     guidance:
       'Required whether or not any rehabilitation has been done (Q58, Q59). ' +

@@ -2,6 +2,7 @@ import { SECTIONS, SECTIONS_BY_ID, ALL_QUESTIONS, NUMBERED_COUNT } from './quest
 import { SUBJECTS, SUBJECTS_BY_ID, TOTAL_MIN_PHOTOS } from './photo-subjects.js';
 import * as store from './storage.js';
 import { prepare, objectUrl, releaseUrls, detachedUrl, revoke } from './photos.js';
+import { buildBundle, photoIds } from './export.js';
 
 const root = document.getElementById('app');
 
@@ -170,6 +171,7 @@ async function viewSurvey(surveyId) {
   const answers = survey.answers || {};
   const counts = await store.photoCounts(surveyId);
   const photosTaken = SUBJECTS.reduce((n, s) => n + Math.min(counts.get(s.id) || 0, s.minPhotos), 0);
+  const photosTotal = [...counts.values()].reduce((n, c) => n + c, 0);
   const done = answeredCount(answers);
 
   const rows = SECTIONS.map((section) => {
@@ -214,7 +216,15 @@ async function viewSurvey(surveyId) {
       progressBar(done, NUMBERED_COUNT),
       el('ul', { class: 'list' }, rows),
       el('div', { class: 'actions spread' }, [
-        el('button', { text: 'Export JSON', onclick: () => exportSurvey(surveyId) }),
+        el('span', {
+          class: 'muted',
+          text: `${photosTotal} photograph${photosTotal === 1 ? '' : 's'} attached`,
+        }),
+        el('button', {
+          class: 'primary',
+          text: 'Export survey + photos',
+          onclick: (event) => exportSurvey(surveyId, event.currentTarget),
+        }),
       ]),
     ])
   );
@@ -228,6 +238,7 @@ async function viewSection(surveyId, sectionId) {
   if (!survey || !section) return viewSurveyList();
 
   const answers = survey.answers || {};
+  const derived = section.id === 'observation' ? await photographsBlock(surveyId, survey) : null;
   const index = SECTIONS.findIndex((s) => s.id === sectionId);
   const next = SECTIONS[index + 1];
   const previous = SECTIONS[index - 1];
@@ -242,6 +253,7 @@ async function viewSection(surveyId, sectionId) {
       section.preamble ? el('p', { class: 'guidance', text: section.preamble }) : null,
       section.note ? el('p', { class: 'muted', text: section.note }) : null,
       el('div', { class: 'questions' }, fields),
+      derived,
       el('div', { class: 'actions spread' }, [
         previous
           ? el('button', {
@@ -407,6 +419,48 @@ function control(question, key, value, save, rerender) {
   }
 }
 
+/**
+ * The paper form's observation page asks "Photographs taken: Yes/No" and for a
+ * list of photo IDs. Both are facts about the record rather than judgements, so
+ * they are derived here instead of typed — which also keeps the IDs in the
+ * answer sheet identical to the filenames in the export.
+ */
+async function photographsBlock(surveyId, survey) {
+  const photos = await store.listPhotos(surveyId);
+  const ids = photoIds(survey, photos);
+
+  const listed = SUBJECTS.map((subject) => {
+    const mine = photos
+      .filter((p) => p.locationId === subject.id)
+      .sort((a, b) => a.takenAt - b.takenAt)
+      .map((p) => ids.get(p.id));
+    if (!mine.length) return null;
+    return el('li', {}, [
+      el('span', { class: 'id-subject', text: subject.name }),
+      el('span', { class: 'id-list', text: mine.join(', ') }),
+    ]);
+  }).filter(Boolean);
+
+  return el('div', { class: 'question derived' }, [
+    el('p', { class: 'q-label', text: 'Photographs taken' }),
+    el('p', {
+      class: photos.length ? 'ok' : 'warn',
+      text: photos.length
+        ? `Yes — ${photos.length} photograph${photos.length === 1 ? '' : 's'}`
+        : 'No',
+    }),
+    el('p', { class: 'q-label sub', text: 'Photo IDs' }),
+    photos.length
+      ? el('ul', { class: 'id-list-wrap' }, listed)
+      : el('p', { class: 'muted', text: 'None recorded.' }),
+    el('p', {
+      class: 'muted',
+      text: 'Derived from the photographs attached to this survey. These IDs are the filenames in the export.',
+    }),
+    el('button', { text: 'Go to photographs', onclick: () => viewPhotoSubjects(surveyId) }),
+  ]);
+}
+
 /* ----------------------------------------------------------- photographs -- */
 
 async function viewPhotoSubjects(surveyId) {
@@ -450,6 +504,7 @@ async function viewSubject(surveyId, subjectId) {
   if (!survey || !subject) return viewSurveyList();
 
   const photos = await store.listPhotos(surveyId, subjectId);
+  const ids = photoIds(survey, await store.listPhotos(surveyId));
   const remaining = Math.max(0, subject.minPhotos - photos.length);
 
   const input = el('input', {
@@ -478,7 +533,7 @@ async function viewSubject(surveyId, subjectId) {
         el('button', {
           class: 'shot',
           'aria-label': `View photograph ${index + 1} full size`,
-          onclick: () => openViewer(photos, index),
+          onclick: () => openViewer(photos, index, ids),
         }, [
           el('img', {
             src: objectUrl(photo.thumb || photo.blob),
@@ -486,9 +541,7 @@ async function viewSubject(surveyId, subjectId) {
             loading: 'lazy',
           }),
         ]),
-        photo.width
-          ? el('span', { class: 'dims', text: `${photo.width}×${photo.height}` })
-          : null,
+        el('span', { class: 'dims', text: ids.get(photo.id) || '' }),
         el('button', {
           class: 'remove',
           text: '×',
@@ -535,7 +588,7 @@ async function viewSubject(surveyId, subjectId) {
 
 /* --------------------------------------------------------- photo viewer -- */
 
-function openViewer(photos, startIndex) {
+function openViewer(photos, startIndex, ids = new Map()) {
   let index = startIndex;
   let url = null;
 
@@ -549,6 +602,7 @@ function openViewer(photos, startIndex) {
     image.src = url;
     image.alt = `Photograph ${index + 1} of ${photos.length}, full size`;
     caption.textContent =
+      (ids.get(photo.id) ? ids.get(photo.id) + ' · ' : '') +
       `${index + 1} of ${photos.length}` +
       (photo.width ? ` · ${photo.width}×${photo.height}` : '') +
       ` · ${Math.round(photo.blob.size / 1024)} KB`;
@@ -593,49 +647,32 @@ function openViewer(photos, startIndex) {
   document.body.append(overlay);
 }
 
-/* -------------------------------------------------------------- export -- */
+/* ------------------------------------------------------------- delivery -- */
 
-async function exportSurvey(surveyId) {
-  const survey = await store.getSurvey(surveyId);
-  const photos = await store.listPhotos(surveyId);
+async function exportSurvey(surveyId, button) {
+  const label = button && button.textContent;
+  if (button) {
+    button.disabled = true;
+    button.textContent = 'Packaging…';
+  }
+  try {
+    const survey = await store.getSurvey(surveyId);
+    const photos = await store.listPhotos(surveyId);
+    const { blob, filename } = await buildBundle(survey, photos);
 
-  const record = {
-    survey: {
-      id: survey.id,
-      siteName: survey.siteName,
-      reference: survey.reference,
-      enumerator: survey.surveyor,
-      createdAt: new Date(survey.createdAt).toISOString(),
-    },
-    answers: SECTIONS.map((section) => ({
-      section: section.number !== undefined ? section.number : section.id,
-      title: section.title,
-      questions: section.questions
-        .filter((q) => isAnswered(survey.answers || {}, q))
-        .map((q) => ({
-          number: q.n || null,
-          question: q.label,
-          answer: survey.answers[q.id],
-          other: survey.answers[q.id + '_other'] || undefined,
-          followUp: survey.answers[q.id + '_f'] || undefined,
-        })),
-    })).filter((s) => s.questions.length),
-    photographs: SUBJECTS.map((subject) => ({
-      subject: subject.name,
-      required: subject.minPhotos,
-      taken: photos.filter((p) => p.locationId === subject.id).length,
-      notes: (survey.notes || {})[subject.id] || undefined,
-    })),
-  };
-
-  const blob = new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const name = (survey.reference || survey.siteName || 'survey').replace(/[^\w-]+/g, '-');
-  const link = el('a', { href: url, download: `${name}.json` });
-  document.body.append(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const url = URL.createObjectURL(blob);
+    const link = el('a', { href: url, download: filename });
+    document.body.append(link);
+    link.click();
+    link.remove();
+    // Large bundles keep downloading after the click; hold the URL a while.
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = label;
+    }
+  }
 }
 
 viewSurveyList();

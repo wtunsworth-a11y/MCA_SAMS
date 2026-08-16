@@ -111,14 +111,39 @@ The trade-off is deliberate: a survey holds tens of megabytes of photographs
 rather than a few hundred kilobytes. Illegible evidence is worth less than the
 storage it saves.
 
-## Getting data off the device
+## Delivery — answers and photographs together
 
-**Export JSON** on the survey screen downloads the answer sheet with question
-numbers, wording, answers, "Other" text and follow-ups, plus per-subject photo
-counts and notes.
+**Export survey + photos** produces one ZIP holding the whole record:
 
-Photographs themselves are **not** included in that export — they stay in device
-storage. Moving image files off the phone in bulk is not built yet.
+```
+MGL-2026-014.zip
+├── README.txt     What the bundle holds, and any incomplete photo coverage
+├── survey.json    Full record: answers, photo manifest, per-subject counts
+├── answers.csv    One row per answered question, with linked photo IDs
+├── photos.csv     One row per photograph, with the questions it evidences
+└── photos/
+    ├── MGL-2026-014-EQP-01.jpg     full resolution, original bytes
+    └── MGL-2026-014-EQP-02.jpg
+```
+
+Every photograph carries a stable ID — `REFERENCE-SUBJECT-NN` — assigned per
+subject in capture order. That ID is the filename in `photos/`, the value shown
+under the thumbnail in the app, and the entry in the observation page's *Photo
+IDs* field, so an image can be traced to its survey without being opened.
+
+**The link runs both ways.** `answers.csv` gives the photo IDs bearing on each
+question; `photos.csv` gives the question numbers each photograph evidences. The
+mapping comes from each subject's `evidences` list in
+[`js/photo-subjects.js`](js/photo-subjects.js) — Equipment evidences Q25, Q26,
+Q33 and Q40; Rehabilitation evidences Q58–Q60; and so on.
+
+The observation page's *Photographs taken* and *Photo IDs* are derived from the
+record rather than typed, so they cannot drift out of step with the images
+actually attached.
+
+The ZIP is written by [`js/zip.js`](js/zip.js), a small store-only encoder —
+no dependency, and JPEG data would not compress anyway. Images go in as their
+original bytes.
 
 ## Layout
 
@@ -130,6 +155,8 @@ storage. Moving image files off the phone in bulk is not built yet.
 | `js/photo-subjects.js` | Photographic schedule and per-subject minimums |
 | `js/storage.js` | IndexedDB persistence for surveys, answers and photographs |
 | `js/photos.js` | Camera intake, thumbnails, object-URL lifecycle |
+| `js/export.js` | Photo IDs, cross-referenced record, bundle assembly |
+| `js/zip.js` | Minimal store-only ZIP writer |
 | `js/app.js` | Views and rendering |
 | `sw.js` | Service worker — offline app shell |
 | `manifest.webmanifest` | PWA manifest |
@@ -138,7 +165,8 @@ storage. Moving image files off the phone in bulk is not built yet.
 
 ## Not yet covered
 
-- No bulk photo export, so images can only leave the phone one at a time.
-- No sync or central collection point; each device holds its own records.
+- No sync or central collection point; each device holds its own records, and
+  bundles are moved off by hand.
+- Bundles are per-survey; there is no "export everything on this phone".
 - Section 0 captures consent as a recorded answer and a typed signature, not a
   drawn one.

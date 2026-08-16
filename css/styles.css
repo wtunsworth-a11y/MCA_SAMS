@@ -473,3 +473,37 @@ input,
     --badge-met-bg: #163024;
   }
 }
+
+/* -- derived observation block -- */
+
+.derived {
+  background: var(--guidance-bg);
+  border-top: none;
+  border-radius: var(--radius);
+  padding: 0.85rem;
+}
+
+.id-list-wrap {
+  list-style: none;
+  margin: 0.3rem 0 0.6rem;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.id-list-wrap li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.id-subject {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.id-list {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  word-break: break-word;
+}
