@@ -1,8 +1,8 @@
-// Persistence layer. Surveys and photographs are held in IndexedDB so the app
-// keeps working with no connectivity, which is the normal case on site.
+// Persistence layer. Surveys, answers and photographs are held in IndexedDB so
+// the app keeps working with no connectivity, which is the normal case on site.
 
 const DB_NAME = 'mca-sams';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 let dbPromise = null;
 
@@ -12,7 +12,7 @@ function openDb() {
   dbPromise = new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
 
-    request.onupgradeneeded = () => {
+    request.onupgradeneeded = (event) => {
       const db = request.result;
 
       if (!db.objectStoreNames.contains('surveys')) {
@@ -23,6 +23,22 @@ function openDb() {
         const photos = db.createObjectStore('photos', { keyPath: 'id' });
         photos.createIndex('bySurvey', 'surveyId');
         photos.createIndex('byLocation', ['surveyId', 'locationId']);
+      }
+
+      // v1 stored photographs only; v2 adds the answer sheet. Existing records
+      // gain an empty `answers` map so older surveys keep opening.
+      if (event.oldVersion < 2) {
+        const store = request.transaction.objectStore('surveys');
+        store.openCursor().onsuccess = (e) => {
+          const cursor = e.target.result;
+          if (!cursor) return;
+          const survey = cursor.value;
+          if (!survey.answers) {
+            survey.answers = {};
+            cursor.update(survey);
+          }
+          cursor.continue();
+        };
       }
     };
 
@@ -67,9 +83,7 @@ export async function listSurveys() {
 }
 
 export async function getSurvey(id) {
-  return tx('surveys', 'readonly', (t) =>
-    request(t.objectStore('surveys').get(id))
-  );
+  return tx('surveys', 'readonly', (t) => request(t.objectStore('surveys').get(id)));
 }
 
 export async function createSurvey({ siteName, reference, surveyor }) {
@@ -78,6 +92,7 @@ export async function createSurvey({ siteName, reference, surveyor }) {
     siteName,
     reference,
     surveyor,
+    answers: {},
     notes: {},
     createdAt: Date.now(),
     updatedAt: Date.now(),
@@ -90,6 +105,20 @@ export async function updateSurvey(survey) {
   survey.updatedAt = Date.now();
   await tx('surveys', 'readwrite', (t) => t.objectStore('surveys').put(survey));
   return survey;
+}
+
+/** Write a single answer without reading the whole record back into a view. */
+export async function saveAnswer(surveyId, key, value) {
+  const survey = await getSurvey(surveyId);
+  if (!survey) return null;
+  survey.answers = survey.answers || {};
+  if (value === '' || value === null || value === undefined ||
+      (Array.isArray(value) && value.length === 0)) {
+    delete survey.answers[key];
+  } else {
+    survey.answers[key] = value;
+  }
+  return updateSurvey(survey);
 }
 
 export async function deleteSurvey(id) {
@@ -113,12 +142,15 @@ export async function listPhotos(surveyId, locationId) {
   });
 }
 
-export async function addPhoto({ surveyId, locationId, blob }) {
+export async function addPhoto({ surveyId, locationId, blob, thumb, width, height }) {
   const photo = {
     id: newId(),
     surveyId,
     locationId,
     blob,
+    thumb: thumb || blob,
+    width: width || 0,
+    height: height || 0,
     takenAt: Date.now(),
   };
   await tx('photos', 'readwrite', (t) => t.objectStore('photos').put(photo));
@@ -130,8 +162,8 @@ export async function deletePhoto(id) {
 }
 
 /**
- * Photo counts for one survey, keyed by location id.
- * Locations with no photographs yet are simply absent from the map.
+ * Photo counts for one survey, keyed by subject id.
+ * Subjects with no photographs yet are simply absent from the map.
  */
 export async function photoCounts(surveyId) {
   const photos = await listPhotos(surveyId);

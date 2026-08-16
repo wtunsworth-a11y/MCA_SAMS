@@ -2,14 +2,15 @@
 // works in the field with no connection. Survey data never travels through
 // here — it lives in IndexedDB on the device.
 
-const CACHE = 'managalas-survey-v1';
+const CACHE = 'managalas-survey-v2';
 
 const SHELL = [
   '.',
   'index.html',
   'css/styles.css',
   'js/app.js',
-  'js/locations.js',
+  'js/questions.js',
+  'js/photo-subjects.js',
   'js/storage.js',
   'js/photos.js',
   'manifest.webmanifest',

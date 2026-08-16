@@ -11,7 +11,7 @@
 //
 // To add a subject, append an entry here — nothing else needs to change.
 
-export const LOCATIONS = [
+export const SUBJECTS = [
   {
     id: 'site',
     name: 'Mining Site',
@@ -71,7 +71,7 @@ export const LOCATIONS = [
   },
 ];
 
-export const LOCATIONS_BY_ID = new Map(LOCATIONS.map((l) => [l.id, l]));
+export const SUBJECTS_BY_ID = new Map(SUBJECTS.map((s) => [s.id, s]));
 
 /** Total photographs required to complete a full survey. */
-export const TOTAL_MIN_PHOTOS = LOCATIONS.reduce((n, l) => n + l.minPhotos, 0);
+export const TOTAL_MIN_PHOTOS = SUBJECTS.reduce((n, s) => n + s.minPhotos, 0);
