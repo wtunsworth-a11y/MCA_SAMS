@@ -236,7 +236,7 @@ async function viewLocation(surveyId, locationId) {
   const notes = el('textarea', {
     class: 'notes',
     rows: '4',
-    placeholder: 'Observations for this location',
+    placeholder: 'Observations for this subject',
     onchange: async (event) => {
       survey.notes = survey.notes || {};
       survey.notes[locationId] = event.target.value;

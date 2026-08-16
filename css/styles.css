@@ -7,6 +7,10 @@
   --accent: #12657d;
   --good: #1c7a4b;
   --warn: #a4530d;
+  --on-accent: #ffffff;
+  --guidance-bg: #eef4f6;
+  --badge-bg: #fbeadb;
+  --badge-met-bg: #e2f1e8;
   --radius: 10px;
 }
 
@@ -59,7 +63,7 @@ p {
 }
 
 .guidance {
-  background: #eef4f6;
+  background: var(--guidance-bg);
   border-left: 3px solid var(--accent);
   padding: 0.6rem 0.8rem;
   border-radius: 0 var(--radius) var(--radius) 0;
@@ -125,12 +129,13 @@ p {
   white-space: nowrap;
   padding: 0.15rem 0.5rem;
   border-radius: 999px;
-  background: #fbeadb;
+  background: var(--badge-bg);
   color: var(--warn);
+  font-variant-numeric: tabular-nums;
 }
 
 .badge.met {
-  background: #e2f1e8;
+  background: var(--badge-met-bg);
   color: var(--good);
 }
 
@@ -169,7 +174,7 @@ button,
 .primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   font-weight: 600;
 }
 
@@ -288,23 +293,9 @@ input,
     --accent: #5cc0dd;
     --good: #63c894;
     --warn: #e2a35f;
-  }
-
-  .primary {
-    color: #05171d;
-  }
-
-  .guidance {
-    background: #12242b;
-  }
-
-  .badge {
-    background: #33261a;
-    color: var(--warn);
-  }
-
-  .badge.met {
-    background: #163024;
-    color: var(--good);
+    --on-accent: #05171d;
+    --guidance-bg: #12242b;
+    --badge-bg: #33261a;
+    --badge-met-bg: #163024;
   }
 }
