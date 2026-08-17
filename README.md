@@ -12,10 +12,12 @@ the European Union.
   sends it deliberately.
 - **No build tools required to run it.** Plain HTML/CSS/JavaScript.
 
-> **New here?** If you are an enumerator, read
-> [`docs/ENUMERATOR_SETUP.md`](docs/ENUMERATOR_SETUP.md). If you are the
-> supervisor publishing it and collecting the data, read
-> [`docs/SUPERVISOR_GUIDE.md`](docs/SUPERVISOR_GUIDE.md).
+> **New here?**
+> - Installing it on a phone → [`docs/INSTALL_GUIDE.md`](docs/INSTALL_GUIDE.md)
+> - Conducting the interview → [`docs/INTERVIEWER_GUIDE.md`](docs/INTERVIEWER_GUIDE.md)
+> - Publishing it and collecting the data → [`docs/SUPERVISOR_GUIDE.md`](docs/SUPERVISOR_GUIDE.md)
+>
+> Word versions of all three sit alongside them in `docs/` for printing.
 
 ---
 
@@ -222,7 +224,8 @@ the bundle's size.
 | `manifest.webmanifest` | PWA manifest |
 | `icons/` | Home-screen icons |
 | `build.js` | Builds `dist/MCA_SAMS_Survey.html`, the single-file version |
-| `docs/` | Enumerator setup and supervisor guides |
+| `docs/` | Field guides, in Markdown and Word |
+| `docs/generators/` | Builds the Word guides from the Markdown |
 | `received_data/` | Where exports go — git-ignored; see its README |
 | `incoming/` | Source material — the paper form; not used at runtime |
 
