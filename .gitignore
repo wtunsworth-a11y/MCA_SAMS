@@ -1,0 +1,6 @@
+# Survey data never belongs in the repository — see received_data/README.md
+received_data/*
+!received_data/README.md
+
+node_modules/
+.DS_Store

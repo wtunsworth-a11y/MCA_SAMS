@@ -1,0 +1,3130 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#12343f">
+  <title>Managalas Mining Survey</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIxOCIgZmlsbD0iIzEyMzQzZiIvPgogIDxwYXRoIGQ9Ik04IDYyIEwzMCAzNCBMNDYgNTQgTDYyIDMwIEw5MiA2MiBaIiBmaWxsPSIjMWQ1NTY2Ii8+CiAgPHBhdGggZD0iTTggNjIgTDMwIDM0IEw0MSA0OCBMMjYgNjIgWiIgZmlsbD0iIzJiNzE4NiIvPgogIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjcwIiByeD0iMzQiIHJ5PSIxMyIgZmlsbD0iIzBkMjgzMCIvPgogIDxwYXRoIGQ9Ik0xNiA2OCBBMzQgMTMgMCAwIDAgODQgNjggQTM0IDExIDAgMCAxIDE2IDY4IFoiIGZpbGw9IiM1Y2MwZGQiLz4KICA8ZWxsaXBzZSBjeD0iNTAiIGN5PSI3MCIgcng9IjI2IiByeT0iOSIgZmlsbD0iIzEyM2Y0ZCIvPgogIDxjaXJjbGUgY3g9IjQzIiBjeT0iNzAiIHI9IjQuMiIgZmlsbD0iI2YwYzA0YSIvPgogIDxjaXJjbGUgY3g9IjU1IiBjeT0iNzIiIHI9IjMuMiIgZmlsbD0iI2ZmZDc2YiIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNjYiIHI9IjIuNCIgZmlsbD0iI2UwYWQzNCIvPgo8L3N2Zz4K" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIxOCIgZmlsbD0iIzEyMzQzZiIvPgogIDxwYXRoIGQ9Ik04IDYyIEwzMCAzNCBMNDYgNTQgTDYyIDMwIEw5MiA2MiBaIiBmaWxsPSIjMWQ1NTY2Ii8+CiAgPHBhdGggZD0iTTggNjIgTDMwIDM0IEw0MSA0OCBMMjYgNjIgWiIgZmlsbD0iIzJiNzE4NiIvPgogIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjcwIiByeD0iMzQiIHJ5PSIxMyIgZmlsbD0iIzBkMjgzMCIvPgogIDxwYXRoIGQ9Ik0xNiA2OCBBMzQgMTMgMCAwIDAgODQgNjggQTM0IDExIDAgMCAxIDE2IDY4IFoiIGZpbGw9IiM1Y2MwZGQiLz4KICA8ZWxsaXBzZSBjeD0iNTAiIGN5PSI3MCIgcng9IjI2IiByeT0iOSIgZmlsbD0iIzEyM2Y0ZCIvPgogIDxjaXJjbGUgY3g9IjQzIiBjeT0iNzAiIHI9IjQuMiIgZmlsbD0iI2YwYzA0YSIvPgogIDxjaXJjbGUgY3g9IjU1IiBjeT0iNzIiIHI9IjMuMiIgZmlsbD0iI2ZmZDc2YiIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNjYiIHI9IjIuNCIgZmlsbD0iI2UwYWQzNCIvPgo8L3N2Zz4K">
+  <style>
+:root {
+  --ink: #12343f;
+  --ink-soft: #5b7480;
+  --line: #d7e1e5;
+  --page: #f6f8f9;
+  --card: #ffffff;
+  --accent: #12657d;
+  --good: #1c7a4b;
+  --warn: #a4530d;
+  --on-accent: #ffffff;
+  --guidance-bg: #eef4f6;
+  --badge-bg: #fbeadb;
+  --badge-met-bg: #e2f1e8;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  background: var(--page);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0.2rem 0;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+p {
+  margin: 0.4rem 0;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  min-height: 2.5rem;
+}
+
+.muted {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.empty {
+  color: var(--ink-soft);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.guidance {
+  background: var(--guidance-bg);
+  border-left: 3px solid var(--accent);
+  padding: 0.6rem 0.8rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.92rem;
+}
+
+.warn {
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.ok {
+  color: var(--good);
+  font-weight: 600;
+}
+
+/* -- lists and cards -- */
+
+.list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent);
+}
+
+.card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ref {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+/* -- progress -- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--badge-bg);
+  color: var(--warn);
+  font-variant-numeric: tabular-nums;
+}
+
+.badge.met {
+  background: var(--badge-met-bg);
+  color: var(--good);
+}
+
+.bar {
+  display: block;
+  height: 6px;
+  margin-top: 0.6rem;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  background: var(--warn);
+}
+
+.fill.done {
+  background: var(--good);
+}
+
+/* -- buttons -- */
+
+button,
+.capture {
+  font: inherit;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+
+.back {
+  border: none;
+  background: none;
+  padding: 0.4rem 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.capture {
+  display: block;
+  text-align: center;
+  margin: 0.9rem 0;
+}
+
+.hidden-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* -- forms -- */
+
+.form {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.form label span {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input,
+.notes {
+  font: inherit;
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: inherit;
+}
+
+.notes {
+  margin-top: 0.4rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* -- questions -- */
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.questions {
+  display: grid;
+  gap: 1.1rem;
+  margin: 1rem 0;
+}
+
+.question {
+  border-top: 1px solid var(--line);
+  padding-top: 0.9rem;
+}
+
+.q-label {
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  text-wrap: pretty;
+}
+
+.q-label.sub {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.options {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  min-height: 2.4rem;
+}
+
+.option:hover {
+  background: var(--guidance-bg);
+}
+
+.option input {
+  width: auto;
+  margin: 0.15rem 0 0;
+  flex: none;
+  accent-color: var(--accent);
+  min-width: 1.05rem;
+  min-height: 1.05rem;
+}
+
+.follow {
+  margin-top: 0.7rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--line);
+}
+
+.inline-field {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.inline-field span {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.6rem;
+}
+
+.with-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.unit {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.actions.spread {
+  justify-content: space-between;
+  margin: 1.2rem 0 2rem;
+}
+
+/* -- photo grid -- */
+
+.grid {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  gap: 0.5rem;
+}
+
+.grid li {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: zoom-in;
+  background: none;
+}
+
+.grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.dims {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  font-size: 0.65rem;
+  font-variant-numeric: tabular-nums;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  background: rgba(9, 24, 30, 0.72);
+  color: #fff;
+  pointer-events: none;
+}
+
+/* -- full-size viewer -- */
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(6, 18, 22, 0.94);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+.viewer-image {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+}
+
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.viewer-caption {
+  margin: 0;
+  color: #dfe9ec;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.viewer-close,
+.viewer-nav button {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: transparent;
+  color: #fff;
+}
+
+.viewer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.remove {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  line-height: 1;
+  border-radius: 50%;
+  border: none;
+  background: rgba(18, 52, 63, 0.78);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e8eef0;
+    --ink-soft: #9bb0b8;
+    --line: #2b4049;
+    --page: #0f1c21;
+    --card: #16272e;
+    --accent: #5cc0dd;
+    --good: #63c894;
+    --warn: #e2a35f;
+    --on-accent: #05171d;
+    --guidance-bg: #12242b;
+    --badge-bg: #33261a;
+    --badge-met-bg: #163024;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink: #e8eef0;
+  --ink-soft: #9bb0b8;
+  --line: #2b4049;
+  --page: #0f1c21;
+  --card: #16272e;
+  --accent: #5cc0dd;
+  --good: #63c894;
+  --warn: #e2a35f;
+  --on-accent: #05171d;
+  --guidance-bg: #12242b;
+  --badge-bg: #33261a;
+  --badge-met-bg: #163024;
+}
+
+
+/* -- derived observation block -- */
+
+.derived {
+  background: var(--guidance-bg);
+  border-top: none;
+  border-radius: var(--radius);
+  padding: 0.85rem;
+}
+
+.id-list-wrap {
+  list-style: none;
+  margin: 0.3rem 0 0.6rem;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.id-list-wrap li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.id-subject {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.id-list {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  word-break: break-word;
+}
+
+/* -- delivery -- */
+
+.deliver {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  padding: 0.2rem 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.deliver-status {
+  margin: 0 0 2rem;
+  text-align: right;
+}
+
+.deliver-status:empty {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+  <main id="app" aria-live="polite">
+    <p class="empty">Loading…</p>
+  </main>
+  <noscript><p class="empty">This survey tool needs JavaScript enabled.</p></noscript>
+  <script>
+/* ==== js/config.js ==== */
+// config.js — single source of truth for the things a supervisor may want to
+// change without touching app logic: the app version stamped into every export,
+// the project attribution, and the consent script read aloud before an
+// interview begins.
+//
+// The instrument itself (sections, questions, options) lives in js/questions.js.
+// The photographic schedule lives in js/photo-subjects.js.
+
+const CONFIG = {
+  // Bumped when the instrument or the export shape changes. Written into every
+  // record as `app_version` so an export can be traced to the build that
+  // produced it.
+  appVersion: '1.0.0',
+
+  instrument:
+    'Managalas Conservation Area — Small-Scale Mining Site & Miner Survey',
+
+  project:
+    'Managalas and Oro Province Project (MOPP) — CIFOR-ICRAF, funded by the ' +
+    'European Union.',
+
+  // Section 0 of the paper form, read aloud before the interview begins.
+  consentScript:
+    'Hello. My name is ____, representing the survey team. We are conducting a ' +
+    'survey on small-scale mining in the Managalas Conservation Area.\n\n' +
+    'This survey aims to understand small-scale mining activities, livelihoods, ' +
+    'mining practices, environmental impacts, conservation concerns, and ' +
+    'opportunities for safer and more sustainable mining within and around the ' +
+    'Managalas Conservation Area.\n\n' +
+    'Your participation is voluntary, and all responses will remain strictly ' +
+    'confidential. You may choose to skip any question or stop the interview at ' +
+    'any time. The survey takes approximately 30–45 minutes.\n\n' +
+    'Information collected will be used strictly for research, planning, ' +
+    'training, and the development of appropriate approaches to sustainable ' +
+    'small-scale mining and conservation.',
+
+  // Read at the end of the interview, on the survey screen once every section
+  // has been worked through.
+  thankYouScript:
+    'Thank you very much for your time and for sharing your knowledge. Your ' +
+    'answers will help inform planning for small-scale mining and conservation ' +
+    'in the Managalas Conservation Area.',
+};
+
+/* ==== js/questions.js ==== */
+// The Managalas small-scale mining site & miner survey, transcribed from
+// incoming/Managalas_Small_Scale_Mining_Survey(1).pdf.
+//
+// Question numbers and wording follow the paper form exactly so a completed
+// record can be reconciled against a paper one. Section numbering likewise.
+//
+// Question shapes:
+//   text | textarea | number | date   simple inputs; `unit` labels a number
+//   single                            one option (radio)
+//   multi                             several options (checkbox)
+//   group                             several labelled sub-fields, `fields`
+//
+// Modifiers:
+//   other: true    the "Other" option reveals a free-text box
+//   follow: {...}  a conditional sub-question; `when` lists the parent answers
+//                  that reveal it, or is omitted for "always show"
+
+
+const YES_NO = ['Yes', 'No'];
+
+const SECTIONS = [
+  {
+    id: 'consent',
+    number: 0,
+    title: 'Informed consent',
+    preamble: CONFIG.consentScript,
+    questions: [
+      { id: 'c1', label: 'Name of person taking consent', type: 'text' },
+      {
+        id: 'c2',
+        label: 'Consent',
+        type: 'single',
+        options: ['Respondent consents to participate', 'Respondent declines to participate'],
+        required: true,
+      },
+      { id: 'c3', label: 'Signature / mark of respondent', type: 'text' },
+      { id: 'c4', label: 'Date', type: 'date' },
+    ],
+  },
+
+  {
+    id: 's1',
+    number: 1,
+    title: 'Miner particulars',
+    questions: [
+      { id: 'q1', n: 1, label: 'Survey ID', type: 'text' },
+      { id: 'q2', n: 2, label: 'Date', type: 'date' },
+      { id: 'q3', n: 3, label: 'Name of mining site', type: 'text' },
+      { id: 'q4', n: 4, label: 'Village / Community', type: 'text' },
+      { id: 'q5', n: 5, label: 'Ward / LLG', type: 'text' },
+      { id: 'q6', n: 6, label: 'Sex', type: 'single', options: ['Male', 'Female'] },
+      { id: 'q7', n: 7, label: 'Age', type: 'number', unit: 'years' },
+      { id: 'q8', n: 8, label: 'Place of origin', type: 'text' },
+      { id: 'q9', n: 9, label: 'Current place of residence', type: 'text' },
+      {
+        id: 'q10',
+        n: 10,
+        label: 'How long have you been involved in mining?',
+        type: 'single',
+        options: ['Less than 1 year', '1–5 years', '6–10 years', 'More than 10 years'],
+      },
+      {
+        id: 'q11',
+        n: 11,
+        label: 'Is mining your main source of income?',
+        type: 'single',
+        options: YES_NO,
+        follow: { label: 'If no, what is your main livelihood?', type: 'text', when: ['No'] },
+      },
+    ],
+  },
+
+  {
+    id: 's2',
+    number: 2,
+    title: 'Land ownership and access',
+    questions: [
+      {
+        id: 'q12',
+        n: 12,
+        label: 'Who owns the land where you are mining?',
+        type: 'single',
+        options: [
+          'My own customary land',
+          'Family/clan customary land',
+          'Another clan',
+          'Individual landowner',
+          'Conservation Area',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q13',
+        n: 13,
+        label: 'Did you obtain permission before commencing mining?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q14',
+        n: 14,
+        label: 'Who gave you permission?',
+        type: 'single',
+        options: [
+          'Clan/landowner',
+          'Community leader',
+          'Government',
+          'Mining company/lease holder',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q15',
+        n: 15,
+        label: 'Is there an agreement between the miner/mining group and the landowner?',
+        type: 'single',
+        options: ['Yes, written', 'Yes, verbal', 'No', "Don't know"],
+      },
+      {
+        id: 'q16',
+        n: 16,
+        label: 'Do you pay the landowner for access to the mining area?',
+        type: 'single',
+        options: YES_NO,
+        follow: {
+          label: 'If yes, how?',
+          type: 'single',
+          options: ['Cash', 'Gold', 'Share of production', 'Other'],
+          other: true,
+          when: ['Yes'],
+        },
+      },
+      {
+        id: 'q17',
+        n: 17,
+        label: 'Have you experienced any disagreement or conflict over land or mining rights?',
+        type: 'single',
+        options: YES_NO,
+        follow: { label: 'If yes, briefly explain', type: 'textarea', when: ['Yes'] },
+      },
+    ],
+  },
+
+  {
+    id: 's3',
+    number: 3,
+    title: 'Mining operation',
+    questions: [
+      {
+        id: 'q18',
+        n: 18,
+        label: 'What type of mining do you undertake?',
+        type: 'single',
+        options: [
+          'Labour-intensive / manual',
+          'Semi-mechanised',
+          'Mechanised',
+          'Combination of manual and mechanised',
+        ],
+      },
+      {
+        id: 'q19',
+        n: 19,
+        label: 'What type of deposit are you mining?',
+        type: 'multi',
+        options: [
+          'River gravel',
+          'Riverbank',
+          'Floodplain',
+          'Terrace',
+          'Hill/land alluvial',
+          'Hard rock',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q20',
+        n: 20,
+        label: 'How long have you been mining at this particular site?',
+        type: 'group',
+        fields: [
+          { key: 'years', label: 'Years', type: 'number' },
+          { key: 'months', label: 'Months', type: 'number' },
+        ],
+      },
+      {
+        id: 'q21',
+        n: 21,
+        label: 'How many people are involved in your mining operation?',
+        type: 'group',
+        fields: [
+          { key: 'men', label: 'Men', type: 'number' },
+          { key: 'women', label: 'Women', type: 'number' },
+          { key: 'youth', label: 'Youth', type: 'number' },
+          { key: 'children', label: 'Children', type: 'number' },
+        ],
+      },
+      {
+        id: 'q22',
+        n: 22,
+        label: 'Do you employ workers?',
+        type: 'single',
+        options: YES_NO,
+        follow: { label: 'If yes, approximately how many?', type: 'number', when: ['Yes'] },
+      },
+      {
+        id: 'q23',
+        n: 23,
+        label: 'How are workers paid?',
+        type: 'single',
+        options: [
+          'Daily/weekly wages',
+          'Fortnightly/monthly wages',
+          'Share of gold',
+          'Combination',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q24',
+        n: 24,
+        label: 'How many days per week do you normally mine?',
+        type: 'number',
+        unit: 'days',
+      },
+      {
+        id: 'q25',
+        n: 25,
+        label: 'What equipment do you use?',
+        type: 'multi',
+        options: [
+          'Gold pan',
+          'Shovel/pick',
+          'Sluice box',
+          'Water pump',
+          'Highbanker',
+          'Trommel',
+          'Metal detector',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q26',
+        n: 26,
+        label: 'Which equipment do you own and which do you hire?',
+        type: 'group',
+        fields: [
+          { key: 'own', label: 'Own', type: 'text' },
+          { key: 'hire', label: 'Hire', type: 'text' },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 's4',
+    number: 4,
+    title: 'Gold deposit and production',
+    questions: [
+      {
+        id: 'q27',
+        n: 27,
+        label: 'What type of gold do you mainly recover?',
+        type: 'single',
+        options: [
+          'Alluvial gold',
+          'Fine gold',
+          'Coarse gold',
+          'Nuggets',
+          'Gold-bearing hard rock/ore',
+          'Combination',
+        ],
+      },
+      {
+        id: 'q28',
+        n: 28,
+        label: 'Approximately how much material do you process?',
+        type: 'group',
+        fields: [
+          { key: 'shovels', label: 'Shovels/day', type: 'number' },
+          { key: 'tonnes', label: 'Tonnes/day', type: 'number' },
+        ],
+      },
+      {
+        id: 'q29',
+        n: 29,
+        label: 'Approximately how much gold do you recover?',
+        type: 'group',
+        fields: [
+          { key: 'gramsDay', label: 'Grams/day', type: 'number' },
+          { key: 'gramsWeek', label: 'Grams/week', type: 'number' },
+        ],
+      },
+      {
+        id: 'q30',
+        n: 30,
+        label: 'Is gold production:',
+        type: 'single',
+        options: ['Consistent', 'Seasonal', 'Highly variable'],
+      },
+      {
+        id: 'q31',
+        n: 31,
+        label: 'During which months is gold production usually highest?',
+        type: 'text',
+      },
+      {
+        id: 'q32',
+        n: 32,
+        label: 'What are the main factors affecting your gold production?',
+        type: 'multi',
+        options: [
+          'Water availability',
+          'Gold concentration',
+          'Weather',
+          'Flooding',
+          'Equipment',
+          'Labour',
+          'Access/transport',
+          'Other',
+        ],
+        other: true,
+      },
+    ],
+  },
+
+  {
+    id: 's5',
+    number: 5,
+    title: 'Gold processing and mercury',
+    questions: [
+      {
+        id: 'q33',
+        n: 33,
+        label: 'How do you process the material to recover gold?',
+        type: 'multi',
+        options: [
+          'Panning/Sluicing/Gravity concentration',
+          'Shaking table',
+          'Trommel',
+          'Crushing/grinding',
+          'Mercury amalgamation',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q34',
+        n: 34,
+        label: 'Do you currently use mercury?',
+        type: 'single',
+        options: ['Yes', 'No', 'Previously used'],
+      },
+      { id: 'q35', n: 35, label: 'If yes, where is mercury used?', type: 'text' },
+      {
+        id: 'q36',
+        n: 36,
+        label: 'How frequently do you use mercury?',
+        type: 'single',
+        options: ['Every day', 'Several times per week / Occasionally', 'Other'],
+        other: true,
+      },
+      { id: 'q37', n: 37, label: 'Where do you obtain mercury?', type: 'text' },
+      { id: 'q38', n: 38, label: 'Do you burn gold amalgam?', type: 'single', options: YES_NO },
+      {
+        id: 'q39',
+        n: 39,
+        label: 'Where is amalgam normally burned?',
+        type: 'single',
+        options: ['At mining site', 'At home / community', "Gold buyer's premises", 'Other'],
+        other: true,
+      },
+      {
+        id: 'q40',
+        n: 40,
+        label: 'Do you use a retort when burning amalgam?',
+        type: 'single',
+        options: ['Yes', 'No', 'Don’t know what a retort is'],
+      },
+      {
+        id: 'q41',
+        n: 41,
+        label: 'Have you received training on mercury-free gold processing?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q42',
+        n: 42,
+        label:
+          'Would you be willing to adopt mercury-free gold processing if suitable technology and training were available?',
+        type: 'single',
+        options: ['Yes', 'No', 'Maybe'],
+      },
+    ],
+  },
+
+  {
+    id: 's6',
+    number: 6,
+    title: 'Occupational health and safety',
+    questions: [
+      {
+        id: 'q43',
+        n: 43,
+        label: 'Have you received mining health and safety training?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q44',
+        n: 44,
+        label: 'What are the main safety risks at this mining site?',
+        type: 'multi',
+        options: [
+          'Pit collapse',
+          'Landslide',
+          'Drowning',
+          'Falling rocks',
+          'Mercury exposure',
+          'Snake / insect bites',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q45',
+        n: 45,
+        label: 'Have you or another miner been injured at this site?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q46',
+        n: 46,
+        label: 'What safety equipment is available?',
+        type: 'multi',
+        options: [
+          'Helmet',
+          'Safety boots',
+          'Gloves',
+          'Eye protection',
+          'Ear protection',
+          'Life jacket',
+          'First-aid kit',
+          'None',
+        ],
+      },
+      {
+        id: 'q47',
+        n: 47,
+        label: 'Do workers regularly use PPE?',
+        type: 'single',
+        options: ['Always', 'Sometimes', 'Rarely', 'Never'],
+      },
+      {
+        id: 'q48',
+        n: 48,
+        label: 'Is first aid available at the mining site?',
+        type: 'single',
+        options: YES_NO,
+      },
+    ],
+  },
+
+  {
+    id: 's7',
+    number: 7,
+    title: 'Environment and conservation',
+    questions: [
+      {
+        id: 'q49',
+        n: 49,
+        label: 'Does your mining operation require clearing of vegetation?',
+        type: 'single',
+        options: ['No / minimal', 'Some clearing', 'Significant clearing'],
+      },
+      {
+        id: 'q50',
+        n: 50,
+        label: 'Does your mining activity disturb a river or stream?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q51',
+        n: 51,
+        label: 'Does your operation discharge muddy water into a river or stream?',
+        type: 'single',
+        options: ['Yes', 'No', 'Sometimes'],
+      },
+      {
+        id: 'q52',
+        n: 52,
+        label: 'How do you manage mining waste / tailings?',
+        type: 'multi',
+        options: [
+          'Backfill pits',
+          'Store on site',
+          'Discharge into waterway',
+          'Leave on site',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q53',
+        n: 53,
+        label: 'What environmental changes have you observed as a result of mining?',
+        type: 'multi',
+        options: [
+          'Deforestation',
+          'Riverbank erosion',
+          'Water pollution / turbidity',
+          'Soil erosion',
+          'Loss of fish',
+          'Loss of wildlife habitat',
+          'Abandoned pits',
+          'None observed',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q54',
+        n: 54,
+        label:
+          'Are there important forests, rivers, wildlife habitats or culturally significant areas near your mining site?',
+        type: 'single',
+        options: ['Yes', 'No', "Don't know"],
+      },
+      {
+        id: 'q55',
+        n: 55,
+        label: 'Are you aware that the Managalas area has conservation objectives?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q56',
+        n: 56,
+        label:
+          'Do you believe your mining activities can affect the conservation objectives of Managalas?',
+        type: 'single',
+        options: ['Yes', 'No', 'Unsure'],
+      },
+      {
+        id: 'q57',
+        n: 57,
+        label: 'What could miners do differently to reduce environmental impacts?',
+        type: 'textarea',
+      },
+    ],
+  },
+
+  {
+    id: 's8',
+    number: 8,
+    title: 'Mine-site rehabilitation',
+    questions: [
+      {
+        id: 'q58',
+        n: 58,
+        label: 'Do you rehabilitate the area after mining?',
+        type: 'single',
+        options: ['Always', 'Sometimes', 'Rarely', 'Never'],
+      },
+      {
+        id: 'q59',
+        n: 59,
+        label: 'What rehabilitation activities do you undertake?',
+        type: 'multi',
+        options: [
+          'Backfill pits',
+          'Replace topsoil',
+          'Replant vegetation',
+          'Stabilise riverbanks',
+          'Restore drainage',
+          'None',
+        ],
+      },
+      {
+        id: 'q60',
+        n: 60,
+        label: 'What prevents you from rehabilitating mining sites?',
+        type: 'multi',
+        options: [
+          'Lack of knowledge',
+          'Cost',
+          'Lack of equipment',
+          'Lack of time',
+          'No requirement',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q61',
+        n: 61,
+        label: 'Would you participate in a mine-site rehabilitation programme?',
+        type: 'single',
+        options: ['Yes', 'No', 'Maybe'],
+      },
+    ],
+  },
+
+  {
+    id: 's9',
+    number: 9,
+    title: 'Gold sales and market access',
+    questions: [
+      { id: 'q62', n: 62, label: 'Where do you normally sell your gold?', type: 'text' },
+      {
+        id: 'q63',
+        n: 63,
+        label: 'Who buys your gold?',
+        type: 'single',
+        options: ['Local gold buyer', 'Gold trader', 'Company', 'Other'],
+        other: true,
+        follow: { label: 'Name', type: 'text' },
+      },
+      {
+        id: 'q64',
+        n: 64,
+        label: 'How far do you travel to sell your gold?',
+        type: 'group',
+        fields: [
+          { key: 'km', label: 'Kilometres', type: 'number' },
+          { key: 'hours', label: 'Hours', type: 'number' },
+        ],
+      },
+      {
+        id: 'q65',
+        n: 65,
+        label: 'How often do you sell your gold?',
+        type: 'single',
+        options: ['Daily', 'Weekly', 'Monthly', 'When sufficient gold is recovered'],
+      },
+      {
+        id: 'q66',
+        n: 66,
+        label: 'How is the gold price determined?',
+        type: 'single',
+        options: [
+          'Buyer determines price',
+          'Based on international gold price',
+          'Negotiated with buyer',
+          "Don't know",
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q67',
+        n: 67,
+        label: 'Is your gold weighed and tested before sale?',
+        type: 'single',
+        options: ['Yes', 'No', "Don't know"],
+      },
+      {
+        id: 'q68',
+        n: 68,
+        label: 'Do you receive a receipt or record of your gold sale?',
+        type: 'single',
+        options: ['Always', 'Sometimes', 'Never'],
+      },
+      {
+        id: 'q69',
+        n: 69,
+        label: 'What are the main difficulties in accessing gold markets?',
+        type: 'multi',
+        options: [
+          'Distance',
+          'Transport cost',
+          'Lack of buyers',
+          'Low prices',
+          'Lack of information',
+          'Security',
+          'Other',
+        ],
+        other: true,
+      },
+    ],
+  },
+
+  {
+    id: 's10',
+    number: 10,
+    title: 'Formalisation and mining associations',
+    questions: [
+      {
+        id: 'q70',
+        n: 70,
+        label: 'Is your mining operation formally registered/licensed?',
+        type: 'single',
+        options: ['Yes', 'No', 'Application pending', "Don't know"],
+        follow: {
+          label: 'If no, would you like to join an association?',
+          type: 'single',
+          options: YES_NO,
+          when: ['No'],
+        },
+      },
+      {
+        id: 'q71',
+        n: 71,
+        label: 'Do you belong to a mining association or cooperative?',
+        type: 'single',
+        options: YES_NO,
+        follow: { label: 'If yes, name', type: 'text', when: ['Yes'] },
+      },
+      {
+        id: 'q72',
+        n: 72,
+        label: 'What type of association is it?',
+        type: 'single',
+        options: [
+          'Mining association',
+          'Cooperative',
+          'Landowner association (ILG)',
+          'Community-based organisation',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q73',
+        n: 73,
+        label: 'What benefits do you receive from the association?',
+        type: 'multi',
+        options: [
+          'Training',
+          'Market access',
+          'Equipment',
+          'Finance',
+          'Advocacy / representation',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q74',
+        n: 74,
+        label: 'If you are not formally registered, what is the main reason?',
+        type: 'single',
+        options: [
+          "Don't know how to register",
+          'Cost',
+          'Distance',
+          'Licensing process is difficult',
+          'Land ownership issues',
+          'Lack of information',
+          'Do not see the benefit',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q75',
+        n: 75,
+        label:
+          'Would you be interested in joining/forming a recognised mining association or cooperative?',
+        type: 'single',
+        options: ['Yes', 'No', 'Maybe'],
+      },
+    ],
+  },
+
+  {
+    id: 's11',
+    number: 11,
+    title: 'Social issues',
+    questions: [
+      {
+        id: 'q76',
+        n: 76,
+        label: 'Has mining created any conflicts in the community?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q77',
+        n: 77,
+        label: 'What are the main social issues associated with mining?',
+        type: 'multi',
+        options: [
+          'Land disputes',
+          'Disputes over gold / income',
+          'Disputes between miners and landowners',
+          'Family / community conflict',
+          'Alcohol / drug-related problems',
+          'Safety / security problems',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q78',
+        n: 78,
+        label: 'Have you been robbed or your gold stolen?',
+        type: 'single',
+        options: YES_NO,
+        follow: { label: 'If yes, details', type: 'textarea', when: ['Yes'] },
+      },
+      {
+        id: 'q79',
+        n: 79,
+        label:
+          'Has mining affected traditional livelihoods such as gardening, hunting or fishing?',
+        type: 'single',
+        options: ['Positively', 'Negatively', 'Both', 'No significant effect'],
+      },
+      {
+        id: 'q80',
+        n: 80,
+        label: 'Does mining provide important benefits to your household/community?',
+        type: 'single',
+        options: YES_NO,
+        follow: { label: 'If yes, what are the main benefits?', type: 'textarea', when: ['Yes'] },
+      },
+    ],
+  },
+
+  {
+    id: 's12',
+    number: 12,
+    title: 'Training and awareness',
+    questions: [
+      {
+        id: 'q81',
+        n: 81,
+        label: 'Have you received any formal training related to mining?',
+        type: 'single',
+        options: YES_NO,
+      },
+      {
+        id: 'q82',
+        n: 82,
+        label: 'If yes, what training have you received?',
+        type: 'multi',
+        options: [
+          'Mining methods',
+          'Gold processing',
+          'Mercury management',
+          'Health and safety',
+          'Environmental management',
+          'Mine rehabilitation',
+          'Business / financial management',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q83',
+        n: 83,
+        label: 'What training do you most need?',
+        type: 'multi',
+        options: [
+          'Improved mining methods / Gold recovery',
+          'Mercury-free processing',
+          'Occupational health and safety',
+          'Environmental management / Rehabilitation',
+          'Business management / Gold marketing',
+          'Formalization / licensing',
+          'Conservation',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q84',
+        n: 84,
+        label: 'Would you participate in practical training at your mining site?',
+        type: 'single',
+        options: ['Yes', 'No', 'Maybe'],
+      },
+    ],
+  },
+
+  {
+    id: 's13',
+    number: 13,
+    title: "Miner's view on mining and conservation",
+    questions: [
+      {
+        id: 'q85',
+        n: 85,
+        label:
+          'Before this interview, were you aware of the conservation goals of the Managalas Conservation Area?',
+        type: 'single',
+        options: ['Yes', 'No', 'Somewhat'],
+      },
+      {
+        id: 'q86',
+        n: 86,
+        label: 'In your opinion, can small-scale mining and conservation exist together?',
+        type: 'single',
+        options: ['Yes', 'No', 'Unsure'],
+      },
+      {
+        id: 'q87',
+        n: 87,
+        label:
+          'What changes would be needed to make mining more environmentally sustainable in Managalas?',
+        type: 'textarea',
+      },
+      {
+        id: 'q88',
+        n: 88,
+        label:
+          'If mining is found to be damaging important conservation areas, which option would you prefer?',
+        type: 'single',
+        options: [
+          'Stop mining in sensitive conservation areas',
+          'Move mining to designated areas',
+          'Continue mining with stronger environmental conditions',
+          'Continue mining using improved/sustainable methods',
+          'Develop alternative livelihoods',
+          'Combination of the above',
+          'Unsure',
+        ],
+      },
+      {
+        id: 'q89',
+        n: 89,
+        label:
+          'Would you be willing to change your current mining practices to help achieve conservation goals?',
+        type: 'single',
+        options: ['Yes', 'No', 'Maybe'],
+      },
+      {
+        id: 'q90',
+        n: 90,
+        label: 'Which changes would you be willing to make?',
+        type: 'multi',
+        options: [
+          'Reduce forest clearing',
+          'Avoid sensitive areas',
+          'Avoid mining directly in rivers',
+          'Use mercury-free processing',
+          'Improve tailings management',
+          'Rehabilitate mined areas',
+          'Use safer mining methods',
+          'Reduce size & intensity of operations',
+          'Move to designated mining areas',
+          'Other',
+        ],
+        other: true,
+      },
+      {
+        id: 'q91',
+        n: 91,
+        label:
+          'If sustainable mining methods, training, equipment and market support were available, would you prefer to:',
+        type: 'single',
+        options: [
+          'Continue mining using sustainable practices',
+          'Reduce mining and develop other livelihoods',
+          'Stop mining',
+          'Continue mining as currently practiced',
+          'Unsure',
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 's14',
+    number: 14,
+    title: 'Final comments',
+    questions: [
+      {
+        id: 'q92',
+        n: 92,
+        label:
+          'What is the most important support you would like from government, SAMS, CIFOR-ICRAF, MCF, conservation organisations or other partners?',
+        type: 'textarea',
+      },
+      {
+        id: 'q93',
+        n: 93,
+        label:
+          'What message would you like to give to organisations working on conservation and mining in Managalas?',
+        type: 'textarea',
+      },
+    ],
+  },
+
+  {
+    id: 'observation',
+    title: "Enumerator's observation",
+    note: 'Completed by the enumerator, not the respondent.',
+    questions: [
+      {
+        id: 'o1',
+        label: 'Overall mining intensity',
+        type: 'single',
+        options: ['Low', 'Moderate', 'High', 'Very high'],
+        follow: { label: "Enumerator's notes", type: 'textarea' },
+      },
+      {
+        id: 'o2',
+        label: 'Overall environmental concern',
+        type: 'single',
+        options: ['Low', 'Moderate', 'High', 'Very high'],
+        follow: { label: "Enumerator's notes", type: 'textarea' },
+      },
+      {
+        id: 'o3',
+        label: 'Site GPS recorded',
+        type: 'single',
+        options: YES_NO,
+        follow: { label: 'Lat / Long', type: 'text', when: ['Yes'] },
+      },
+      { id: 'o4', label: "Enumerator's additional comments", type: 'textarea' },
+      { id: 'o5', label: 'Enumerator name', type: 'text' },
+      { id: 'o6', label: 'Signature', type: 'text' },
+      { id: 'o7', label: 'Date', type: 'date' },
+    ],
+  },
+];
+
+const SECTIONS_BY_ID = new Map(SECTIONS.map((s) => [s.id, s]));
+
+/** Every question across every section, in form order. */
+const ALL_QUESTIONS = SECTIONS.flatMap((s) => s.questions);
+
+/** The 93 numbered questions, excluding consent and observation items. */
+const NUMBERED_COUNT = ALL_QUESTIONS.filter((q) => q.n).length;
+
+/* ==== js/photo-subjects.js ==== */
+// Photographic schedule for the Managalas small-scale mining survey.
+//
+// The paper form (incoming/Managalas_Small_Scale_Mining_Survey(1).pdf) records
+// photographs only as "Photographs taken: Yes/No" plus a free-text list of photo
+// IDs, which leaves what to photograph up to each enumerator. This schedule
+// makes the expectation explicit: each subject below declares the minimum number
+// of photographs required before it counts as complete.
+//
+// `guidance` is advisory text shown to the enumerator on site. Question numbers
+// refer to the paper form.
+//
+// `code` prefixes the photo IDs written into the export and shown on screen, so
+// an image file can be traced back to its subject without opening it.
+// `evidences` lists the question numbers the subject bears on, which is what
+// ties the photographs to the answer sheet in the delivered bundle.
+//
+// To add a subject, append an entry here — nothing else needs to change.
+
+const SUBJECTS = [
+  {
+    id: 'site',
+    name: 'Mining Site',
+    code: 'SITE',
+    evidences: [19, 50, 51, 52],
+    minPhotos: 4,
+    guidance:
+      'A wide shot establishing the site in its landscape, the working face ' +
+      'or pit, the deposit being worked (Q19), and where the operation meets ' +
+      'water — river, stream or discharge point (Q50, Q51). Include tailings ' +
+      'or waste material if stored on site (Q52). Record the GPS position ' +
+      'alongside these.',
+  },
+  {
+    id: 'equipment',
+    name: 'Equipment',
+    code: 'EQP',
+    evidences: [25, 26, 33, 40],
+    minPhotos: 8,
+    guidance:
+      'Photograph every item separately — gold pan, shovel and pick, sluice ' +
+      'box, water pump, highbanker, trommel, metal detector and anything else ' +
+      'in use (Q25). Include processing equipment as objects: shaking table, ' +
+      'crushing or grinding gear, retort if one is present (Q33, Q40). Where ' +
+      'an item is hired rather than owned (Q26), note it below. This subject ' +
+      'needs more photographs than any other — one frame per item, not one ' +
+      'frame of the pile.',
+  },
+  {
+    id: 'processing',
+    name: 'Processing Activity',
+    code: 'PROC',
+    evidences: [33, 34, 35, 38, 39, 40],
+    minPhotos: 4,
+    guidance:
+      'The recovery process actually underway, not the idle equipment (Q33). ' +
+      'Photograph material being fed, crushed or ground; gravity ' +
+      'concentration in progress — panning, sluicing or the shaking table ' +
+      'running; and the tailings or wash water leaving the process. Where ' +
+      'mercury is used, record where it is handled and where amalgam is ' +
+      'burned, and whether a retort is fitted (Q34–Q40).',
+  },
+  {
+    id: 'gold',
+    name: 'Gold Recovered',
+    code: 'GOLD',
+    evidences: [27, 29, 67],
+    minPhotos: 2,
+    guidance:
+      'The gold itself — alluvial, fine, coarse, nuggets or gold-bearing ore ' +
+      '(Q27). Include something for scale in the frame, a coin or rule. Add a ' +
+      'shot of it being weighed or of the sale record where either is ' +
+      'available (Q29, Q67, Q68).',
+  },
+  {
+    id: 'rehabilitation',
+    name: 'Rehabilitation',
+    code: 'REHAB',
+    evidences: [58, 59, 60],
+    minPhotos: 1,
+    guidance:
+      'Required whether or not any rehabilitation has been done (Q58, Q59). ' +
+      'If work has taken place, photograph it — backfilled pits, replaced ' +
+      'topsoil, replanting, stabilised riverbanks or restored drainage. If ' +
+      'nothing has been done, photograph the un-rehabilitated ground anyway: ' +
+      'the absence of rehabilitation is itself the record.',
+  },
+];
+
+const SUBJECTS_BY_ID = new Map(SUBJECTS.map((s) => [s.id, s]));
+
+/** Total photographs required to complete a full survey. */
+const TOTAL_MIN_PHOTOS = SUBJECTS.reduce((n, s) => n + s.minPhotos, 0);
+
+/* ==== js/zip.js ==== */
+// Minimal ZIP writer, so a survey leaves the device as one file.
+//
+// Entries are stored, not deflated: the bulk of any bundle is JPEG data, which
+// is already compressed, and storing keeps this small enough to audit. The
+// output is a standard ZIP any archiver opens.
+
+const CRC_TABLE = (() => {
+  const table = new Uint32Array(256);
+  for (let i = 0; i < 256; i++) {
+    let c = i;
+    for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+    table[i] = c >>> 0;
+  }
+  return table;
+})();
+
+function crc32(bytes) {
+  let c = 0xffffffff;
+  for (let i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xff] ^ (c >>> 8);
+  return (c ^ 0xffffffff) >>> 0;
+}
+
+/** MS-DOS time/date, the only stamp the ZIP format carries. */
+function dosStamp(date) {
+  const time =
+    (date.getHours() << 11) | (date.getMinutes() << 5) | (Math.floor(date.getSeconds() / 2) & 0x1f);
+  const day =
+    ((date.getFullYear() - 1980) << 9) | ((date.getMonth() + 1) << 5) | date.getDate();
+  return { time: time & 0xffff, date: day & 0xffff };
+}
+
+async function toBytes(content) {
+  if (content instanceof Uint8Array) return content;
+  if (content instanceof Blob) return new Uint8Array(await content.arrayBuffer());
+  return new TextEncoder().encode(String(content));
+}
+
+/**
+ * Build a ZIP from [{ name, content }], where content is a Blob, Uint8Array or
+ * string. Returns a Blob ready to hand to a download.
+ */
+async function zip(entries, when = new Date()) {
+  const stamp = dosStamp(when);
+  const encoder = new TextEncoder();
+  const parts = [];
+  const central = [];
+  let offset = 0;
+
+  for (const entry of entries) {
+    const name = encoder.encode(entry.name);
+    const data = await toBytes(entry.content);
+    const sum = crc32(data);
+
+    const local = new DataView(new ArrayBuffer(30));
+    local.setUint32(0, 0x04034b50, true); // local file header
+    local.setUint16(4, 20, true); // version needed
+    local.setUint16(6, 0x0800, true); // UTF-8 names
+    local.setUint16(8, 0, true); // stored
+    local.setUint16(10, stamp.time, true);
+    local.setUint16(12, stamp.date, true);
+    local.setUint32(14, sum, true);
+    local.setUint32(18, data.length, true);
+    local.setUint32(22, data.length, true);
+    local.setUint16(26, name.length, true);
+    local.setUint16(28, 0, true);
+
+    parts.push(new Uint8Array(local.buffer), name, data);
+
+    const dir = new DataView(new ArrayBuffer(46));
+    dir.setUint32(0, 0x02014b50, true); // central directory header
+    dir.setUint16(4, 20, true); // version made by
+    dir.setUint16(6, 20, true); // version needed
+    dir.setUint16(8, 0x0800, true);
+    dir.setUint16(10, 0, true);
+    dir.setUint16(12, stamp.time, true);
+    dir.setUint16(14, stamp.date, true);
+    dir.setUint32(16, sum, true);
+    dir.setUint32(20, data.length, true);
+    dir.setUint32(24, data.length, true);
+    dir.setUint16(28, name.length, true);
+    dir.setUint32(42, offset, true); // offset of local header
+    central.push(new Uint8Array(dir.buffer), name);
+
+    offset += 30 + name.length + data.length;
+  }
+
+  const centralSize = central.reduce((n, part) => n + part.length, 0);
+
+  const end = new DataView(new ArrayBuffer(22));
+  end.setUint32(0, 0x06054b50, true); // end of central directory
+  end.setUint16(8, entries.length, true);
+  end.setUint16(10, entries.length, true);
+  end.setUint32(12, centralSize, true);
+  end.setUint32(16, offset, true);
+
+  return new Blob([...parts, ...central, new Uint8Array(end.buffer)], {
+    type: 'application/zip',
+  });
+}
+
+/* ==== js/storage.js ==== */
+// Persistence layer. Surveys, answers and photographs are held in IndexedDB so
+// the app keeps working with no connectivity, which is the normal case on site.
+
+const DB_NAME = 'mca-sams';
+const DB_VERSION = 2;
+
+let dbPromise = null;
+
+function openDb() {
+  if (dbPromise) return dbPromise;
+
+  dbPromise = new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+    request.onupgradeneeded = (event) => {
+      const db = request.result;
+
+      if (!db.objectStoreNames.contains('surveys')) {
+        db.createObjectStore('surveys', { keyPath: 'id' });
+      }
+
+      if (!db.objectStoreNames.contains('photos')) {
+        const photos = db.createObjectStore('photos', { keyPath: 'id' });
+        photos.createIndex('bySurvey', 'surveyId');
+        photos.createIndex('byLocation', ['surveyId', 'locationId']);
+      }
+
+      // v1 stored photographs only; v2 adds the answer sheet. Existing records
+      // gain an empty `answers` map so older surveys keep opening.
+      if (event.oldVersion < 2) {
+        const store = request.transaction.objectStore('surveys');
+        store.openCursor().onsuccess = (e) => {
+          const cursor = e.target.result;
+          if (!cursor) return;
+          const survey = cursor.value;
+          if (!survey.answers) {
+            survey.answers = {};
+            cursor.update(survey);
+          }
+          cursor.continue();
+        };
+      }
+    };
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+
+  return dbPromise;
+}
+
+async function tx(storeNames, mode, fn) {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(storeNames, mode);
+    let result;
+    transaction.oncomplete = () => resolve(result);
+    transaction.onerror = () => reject(transaction.error);
+    transaction.onabort = () => reject(transaction.error);
+    result = fn(transaction);
+  });
+}
+
+function request(req) {
+  return new Promise((resolve, reject) => {
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function newId() {
+  if (crypto.randomUUID) return crypto.randomUUID();
+  return 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
+}
+
+/* -------------------------------------------------------------- surveys -- */
+
+async function listSurveys() {
+  const surveys = await tx('surveys', 'readonly', (t) =>
+    request(t.objectStore('surveys').getAll())
+  );
+  return surveys.sort((a, b) => b.createdAt - a.createdAt);
+}
+
+async function getSurvey(id) {
+  return tx('surveys', 'readonly', (t) => request(t.objectStore('surveys').get(id)));
+}
+
+async function createSurvey({ siteName, reference, surveyor }) {
+  const survey = {
+    id: newId(),
+    siteName,
+    reference,
+    surveyor,
+    answers: {},
+    notes: {},
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  };
+  await tx('surveys', 'readwrite', (t) => t.objectStore('surveys').put(survey));
+  return survey;
+}
+
+async function updateSurvey(survey) {
+  survey.updatedAt = Date.now();
+  await tx('surveys', 'readwrite', (t) => t.objectStore('surveys').put(survey));
+  return survey;
+}
+
+/** Write a single answer without reading the whole record back into a view. */
+async function saveAnswer(surveyId, key, value) {
+  const survey = await getSurvey(surveyId);
+  if (!survey) return null;
+  survey.answers = survey.answers || {};
+  if (value === '' || value === null || value === undefined ||
+      (Array.isArray(value) && value.length === 0)) {
+    delete survey.answers[key];
+  } else {
+    survey.answers[key] = value;
+  }
+  return updateSurvey(survey);
+}
+
+async function deleteSurvey(id) {
+  const photos = await listPhotos(id);
+  await tx(['surveys', 'photos'], 'readwrite', (t) => {
+    t.objectStore('surveys').delete(id);
+    const store = t.objectStore('photos');
+    photos.forEach((p) => store.delete(p.id));
+  });
+}
+
+/* --------------------------------------------------------------- photos -- */
+
+async function listPhotos(surveyId, locationId) {
+  return tx('photos', 'readonly', (t) => {
+    const store = t.objectStore('photos');
+    const req = locationId
+      ? store.index('byLocation').getAll([surveyId, locationId])
+      : store.index('bySurvey').getAll(surveyId);
+    return request(req).then((rows) => rows.sort((a, b) => a.takenAt - b.takenAt));
+  });
+}
+
+async function addPhoto({ surveyId, locationId, blob, thumb, width, height }) {
+  const photo = {
+    id: newId(),
+    surveyId,
+    locationId,
+    blob,
+    thumb: thumb || blob,
+    width: width || 0,
+    height: height || 0,
+    takenAt: Date.now(),
+  };
+  await tx('photos', 'readwrite', (t) => t.objectStore('photos').put(photo));
+  return photo;
+}
+
+async function deletePhoto(id) {
+  await tx('photos', 'readwrite', (t) => t.objectStore('photos').delete(id));
+}
+
+/**
+ * Photo counts for one survey, keyed by subject id.
+ * Subjects with no photographs yet are simply absent from the map.
+ */
+async function photoCounts(surveyId) {
+  const photos = await listPhotos(surveyId);
+  const counts = new Map();
+  photos.forEach((p) => counts.set(p.locationId, (counts.get(p.locationId) || 0) + 1));
+  return counts;
+}
+
+/* ==== js/photos.js ==== */
+// Photo intake.
+//
+// Two images are kept per capture: a full-quality one that is the actual record
+// — nameplates, serial numbers, mercury handling and rehabilitation ground all
+// need to be legible when the photograph is examined later — and a small
+// thumbnail used only to draw the grid quickly.
+//
+// The full image is stored as the camera produced it — the original bytes, not
+// re-encoded — so nothing is lost between the capture and the record. Only
+// images beyond MAX_EDGE are resampled, which no ordinary phone camera reaches;
+// that ceiling exists to stop a 100-megapixel file exhausting device storage.
+// A survey photograph that cannot be read is not evidence.
+
+const MAX_EDGE = 6000;
+const FULL_QUALITY = 0.94;
+
+const THUMB_EDGE = 400;
+const THUMB_QUALITY = 0.75;
+
+async function decode(file) {
+  try {
+    // from-image applies the EXIF orientation phones record, so portrait
+    // captures are not stored on their side.
+    return await createImageBitmap(file, { imageOrientation: 'from-image' });
+  } catch {
+    try {
+      return await createImageBitmap(file);
+    } catch {
+      return null;
+    }
+  }
+}
+
+function render(bitmap, maxEdge, quality) {
+  const scale = Math.min(1, maxEdge / Math.max(bitmap.width, bitmap.height));
+  const width = Math.round(bitmap.width * scale);
+  const height = Math.round(bitmap.height * scale);
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(bitmap, 0, 0, width, height);
+
+  return new Promise((resolve) =>
+    canvas.toBlob((blob) => resolve({ blob, width, height }), 'image/jpeg', quality)
+  );
+}
+
+/**
+ * Prepare a captured file for storage.
+ * Returns the full-quality image plus a grid thumbnail. If the browser cannot
+ * decode the file it is stored untouched rather than dropped.
+ */
+async function prepare(file) {
+  const bitmap = await decode(file);
+  if (!bitmap) return { blob: file, thumb: file, width: 0, height: 0 };
+
+  const needsResize = Math.max(bitmap.width, bitmap.height) > MAX_EDGE;
+  const full = needsResize
+    ? await render(bitmap, MAX_EDGE, FULL_QUALITY)
+    : { blob: file, width: bitmap.width, height: bitmap.height };
+
+  const thumb = await render(bitmap, THUMB_EDGE, THUMB_QUALITY);
+  bitmap.close();
+
+  return {
+    blob: full.blob || file,
+    thumb: thumb.blob || full.blob || file,
+    width: full.width,
+    height: full.height,
+  };
+}
+
+// Object URLs are revoked when a view is torn down, to avoid leaking blobs.
+// A view's DOM is built before it is shown, so URLs are staged in `pending` and
+// only promoted once that view is on screen — otherwise the release pass would
+// revoke the URLs belonging to the view about to be displayed.
+let shown = new Set();
+let pending = new Set();
+
+function objectUrl(blob) {
+  const url = URL.createObjectURL(blob);
+  pending.add(url);
+  return url;
+}
+
+/** Revoke the outgoing view's URLs and adopt the incoming view's. */
+function releaseUrls() {
+  shown.forEach((url) => URL.revokeObjectURL(url));
+  shown = pending;
+  pending = new Set();
+}
+
+/** A URL held outside the view lifecycle, for the full-size viewer. */
+function detachedUrl(blob) {
+  return URL.createObjectURL(blob);
+}
+
+function revoke(url) {
+  URL.revokeObjectURL(url);
+}
+
+/* ==== js/export.js ==== */
+// Delivery. A survey leaves the device as a single ZIP holding the answer sheet
+// and every full-resolution photograph, cross-referenced both ways: the answer
+// sheet names the image files, and each image file's name carries the survey
+// reference and the subject it belongs to.
+
+
+/** A filesystem-safe token for use in filenames. */
+function slug(value, fallback) {
+  const cleaned = String(value || '').trim().replace(/[^\w-]+/g, '-').replace(/^-+|-+$/g, '');
+  return cleaned || fallback;
+}
+
+/**
+ * Stable photo identifiers, assigned per subject in capture order:
+ *   MGL-2026-014-EQP-03
+ * These are what the paper form's "Photo IDs" field asks for, and what the
+ * exported answer sheet references.
+ */
+function photoIds(survey, photos) {
+  const reference = slug(survey.reference || survey.siteName, 'SURVEY');
+  const perSubject = new Map();
+  const ids = new Map();
+
+  SUBJECTS.forEach((subject) => {
+    photos
+      .filter((p) => p.locationId === subject.id)
+      .sort((a, b) => a.takenAt - b.takenAt)
+      .forEach((photo) => {
+        const next = (perSubject.get(subject.id) || 0) + 1;
+        perSubject.set(subject.id, next);
+        ids.set(photo.id, `${reference}-${subject.code}-${String(next).padStart(2, '0')}`);
+      });
+  });
+
+  return ids;
+}
+
+function isAnswered(answers, question) {
+  const value = answers[question.id];
+  if (value === undefined || value === null || value === '') return false;
+  if (Array.isArray(value)) return value.length > 0;
+  if (question.type === 'group') {
+    return Object.values(value).some((v) => v !== '' && v !== null && v !== undefined);
+  }
+  return true;
+}
+
+function flatten(value) {
+  if (Array.isArray(value)) return value.join('; ');
+  if (value && typeof value === 'object') {
+    return Object.entries(value)
+      .map(([k, v]) => `${k}: ${v}`)
+      .join('; ');
+  }
+  return value ?? '';
+}
+
+function csvCell(value) {
+  const text = String(value ?? '');
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+/** Question numbers each photo subject bears on, as a lookup by question. */
+function evidenceIndex() {
+  const byQuestion = new Map();
+  SUBJECTS.forEach((subject) => {
+    (subject.evidences || []).forEach((n) => {
+      if (!byQuestion.has(n)) byQuestion.set(n, []);
+      byQuestion.get(n).push(subject);
+    });
+  });
+  return byQuestion;
+}
+
+function buildRecord(survey, photos) {
+  const answers = survey.answers || {};
+  const ids = photoIds(survey, photos);
+  const byQuestion = evidenceIndex();
+
+  const photographs = photos
+    .slice()
+    .sort((a, b) => a.takenAt - b.takenAt)
+    .map((photo) => {
+      const subject = SUBJECTS.find((s) => s.id === photo.locationId);
+      const id = ids.get(photo.id);
+      return {
+        photoId: id,
+        file: `photos/${id}.jpg`,
+        subject: subject ? subject.name : photo.locationId,
+        evidences: subject ? subject.evidences : [],
+        width: photo.width || null,
+        height: photo.height || null,
+        bytes: photo.blob.size,
+        takenAt: new Date(photo.takenAt).toISOString(),
+      };
+    });
+
+  const sections = SECTIONS.map((section) => ({
+    section: section.number !== undefined ? section.number : section.id,
+    title: section.title,
+    questions: section.questions
+      .filter((q) => isAnswered(answers, q))
+      .map((q) => {
+        const linked = q.n ? byQuestion.get(q.n) || [] : [];
+        const linkedIds = photographs
+          .filter((p) => linked.some((s) => s.name === p.subject))
+          .map((p) => p.photoId);
+        return {
+          number: q.n || null,
+          question: q.label,
+          answer: answers[q.id],
+          other: answers[q.id + '_other'] || undefined,
+          followUp: answers[q.id + '_f'] || undefined,
+          followUpOther: answers[q.id + '_f_other'] || undefined,
+          photoIds: linkedIds.length ? linkedIds : undefined,
+        };
+      }),
+  })).filter((s) => s.questions.length);
+
+  return {
+    survey: {
+      id: survey.id,
+      reference: survey.reference || null,
+      siteName: survey.siteName,
+      enumerator: survey.surveyor || null,
+      createdAt: new Date(survey.createdAt).toISOString(),
+      exportedAt: new Date().toISOString(),
+      instrument: CONFIG.instrument,
+      project: CONFIG.project,
+      app_version: CONFIG.appVersion,
+      questionsAnswered: ALL_QUESTIONS.filter((q) => q.n && isAnswered(answers, q)).length,
+      questionsTotal: ALL_QUESTIONS.filter((q) => q.n).length,
+    },
+    answers: sections,
+    photographs,
+    photoSubjects: SUBJECTS.map((subject) => ({
+      subject: subject.name,
+      code: subject.code,
+      required: subject.minPhotos,
+      taken: photos.filter((p) => p.locationId === subject.id).length,
+      evidences: subject.evidences,
+      notes: (survey.notes || {})[subject.id] || undefined,
+    })),
+  };
+}
+
+function answersCsv(record) {
+  const rows = [['section', 'section_title', 'question_number', 'question', 'answer', 'other', 'follow_up', 'photo_ids']];
+  record.answers.forEach((section) => {
+    section.questions.forEach((q) => {
+      rows.push([
+        section.section,
+        section.title,
+        q.number ?? '',
+        q.question,
+        flatten(q.answer),
+        q.other ?? '',
+        flatten(q.followUp),
+        (q.photoIds || []).join('; '),
+      ]);
+    });
+  });
+  return rows.map((r) => r.map(csvCell).join(',')).join('\n') + '\n';
+}
+
+function photosCsv(record) {
+  const rows = [['photo_id', 'file', 'subject', 'evidences_questions', 'width', 'height', 'bytes', 'taken_at']];
+  record.photographs.forEach((p) => {
+    rows.push([
+      p.photoId,
+      p.file,
+      p.subject,
+      (p.evidences || []).map((n) => `Q${n}`).join('; '),
+      p.width ?? '',
+      p.height ?? '',
+      p.bytes,
+      p.takenAt,
+    ]);
+  });
+  return rows.map((r) => r.map(csvCell).join(',')).join('\n') + '\n';
+}
+
+function readme(record) {
+  const shortfall = record.photoSubjects.filter((s) => s.taken < s.required);
+  return [
+    record.survey.instrument,
+    record.survey.project,
+    '',
+    `Site:       ${record.survey.siteName}`,
+    `Reference:  ${record.survey.reference || '(none)'}`,
+    `Enumerator: ${record.survey.enumerator || '(none)'}`,
+    `Exported:   ${record.survey.exportedAt}`,
+    `App version: ${record.survey.app_version}`,
+    '',
+    `Questions answered: ${record.survey.questionsAnswered} of ${record.survey.questionsTotal}`,
+    `Photographs:        ${record.photographs.length}`,
+    '',
+    'Contents',
+    '  survey.json   Full record: answers, photo manifest, per-subject counts.',
+    '  answers.csv   One row per answered question, with linked photo IDs.',
+    '  photos.csv    One row per photograph, with the questions it evidences.',
+    '  photos/       Full-resolution images, named by photo ID.',
+    '',
+    'Photo IDs follow REFERENCE-SUBJECT-NN and appear in both directions:',
+    'answers.csv lists the photo IDs for each question, and photos.csv lists',
+    'the question numbers each photograph bears on.',
+    '',
+    shortfall.length
+      ? 'Incomplete photographic coverage:\n' +
+        shortfall.map((s) => `  ${s.subject}: ${s.taken} of ${s.required}`).join('\n')
+      : 'Photographic coverage complete for every subject.',
+    '',
+  ].join('\n');
+}
+
+/**
+ * Can this device hand a file to the OS share sheet? Chrome on Android and
+ * Safari on iOS can; most desktop browsers cannot, and fall back to a download.
+ */
+function canShareFiles() {
+  if (!navigator.canShare || !navigator.share) return false;
+  try {
+    return navigator.canShare({
+      files: [new File([new Blob(['x'])], 'probe.zip', { type: 'application/zip' })],
+    });
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Hand the bundle to the enumerator to send however they choose — WhatsApp,
+ * email, Drive, a cable. The share sheet is the point: in the field there is no
+ * single right channel, and the app should not pick one.
+ *
+ * Falls back to a download where sharing files is unsupported or refused.
+ * Returns 'shared', 'cancelled' or 'downloaded'.
+ */
+async function deliver({ blob, filename, record }) {
+  const file = new File([blob], filename, { type: 'application/zip' });
+
+  if (canShareFiles()) {
+    try {
+      await navigator.share({
+        files: [file],
+        title: filename,
+        text:
+          `${record.survey.instrument}\n` +
+          `Site: ${record.survey.siteName}\n` +
+          `Reference: ${record.survey.reference || '(none)'}\n` +
+          `${record.survey.questionsAnswered} of ${record.survey.questionsTotal} questions, ` +
+          `${record.photographs.length} photographs.`,
+      });
+      return 'shared';
+    } catch (error) {
+      // A cancelled share sheet is a choice, not a failure — don't then dump
+      // the file into downloads behind the enumerator's back.
+      if (error && error.name === 'AbortError') return 'cancelled';
+    }
+  }
+
+  download(blob, filename);
+  return 'downloaded';
+}
+
+function download(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  // Large bundles keep writing after the click; hold the URL a while.
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+}
+
+/** Build the delivery bundle for one survey. */
+async function buildBundle(survey, photos) {
+  const record = buildRecord(survey, photos);
+  const ids = photoIds(survey, photos);
+
+  const entries = [
+    { name: 'README.txt', content: readme(record) },
+    { name: 'survey.json', content: JSON.stringify(record, null, 2) },
+    { name: 'answers.csv', content: answersCsv(record) },
+    { name: 'photos.csv', content: photosCsv(record) },
+    ...photos.map((photo) => ({
+      name: `photos/${ids.get(photo.id)}.jpg`,
+      content: photo.blob,
+    })),
+  ];
+
+  const name = slug(survey.reference || survey.siteName, 'survey');
+  return { blob: await zip(entries), filename: `${name}.zip`, record };
+}
+
+/* ==== js/app.js ==== */
+const root = document.getElementById('app');
+
+/* ---------------------------------------------------------------- render -- */
+
+function el(tag, props = {}, children = []) {
+  const node = document.createElement(tag);
+  Object.entries(props).forEach(([key, value]) => {
+    if (key === 'class') node.className = value;
+    else if (key === 'text') node.textContent = value;
+    else if (key.startsWith('on')) node.addEventListener(key.slice(2), value);
+    else if (value !== null && value !== undefined && value !== false) {
+      node.setAttribute(key, value);
+    }
+  });
+  (Array.isArray(children) ? children : [children]).forEach((child) => {
+    if (child) node.append(child);
+  });
+  return node;
+}
+
+function show(view) {
+  releaseUrls();
+  root.replaceChildren(view);
+  window.scrollTo(0, 0);
+}
+
+function progressBar(done, required) {
+  const pct = required === 0 ? 100 : Math.min(100, (done / required) * 100);
+  return el('div', { class: 'bar', role: 'presentation' }, [
+    el('span', { class: done >= required ? 'fill done' : 'fill', style: `width:${pct}%` }),
+  ]);
+}
+
+function badge(count, min, unit) {
+  const met = count >= min;
+  return el('span', {
+    class: met ? 'badge met' : 'badge',
+    text: `${count} / ${min}${unit ? ' ' + unit : ''}`,
+  });
+}
+
+function backBar(label, onclick) {
+  return el('header', { class: 'top' }, [el('button', { class: 'back', text: '← ' + label, onclick })]);
+}
+
+/* ------------------------------------------------------------- answering -- */
+
+/** A question counts as answered when it holds any non-empty value. */
+function isAnswered(answers, question) {
+  const value = answers[question.id];
+  if (value === undefined || value === null || value === '') return false;
+  if (Array.isArray(value)) return value.length > 0;
+  if (question.type === 'group') {
+    return Object.values(value).some((v) => v !== '' && v !== null && v !== undefined);
+  }
+  return true;
+}
+
+function sectionProgress(answers, section) {
+  const done = section.questions.filter((q) => isAnswered(answers, q)).length;
+  return { done, total: section.questions.length };
+}
+
+function answeredCount(answers) {
+  return ALL_QUESTIONS.filter((q) => q.n && isAnswered(answers, q)).length;
+}
+
+/* ------------------------------------------------------------ survey list -- */
+
+async function viewSurveyList() {
+  const surveys = await listSurveys();
+
+  const items = surveys.map((survey) => {
+    const answers = survey.answers || {};
+    const done = answeredCount(answers);
+    return el('li', {}, [
+      el('button', { class: 'card', onclick: () => viewSurvey(survey.id) }, [
+        el('div', { class: 'card-head' }, [
+          el('h2', { text: survey.siteName }),
+          el('span', { class: 'ref', text: survey.reference || '' }),
+        ]),
+        el('p', {
+          class: 'muted',
+          text: `${done} of ${NUMBERED_COUNT} questions · ${new Date(
+            survey.createdAt
+          ).toLocaleDateString()}`,
+        }),
+        progressBar(done, NUMBERED_COUNT),
+      ]),
+    ]);
+  });
+
+  show(
+    el('section', {}, [
+      el('header', { class: 'top' }, [
+        el('h1', { text: 'Managalas survey' }),
+        el('button', { class: 'primary', text: 'New survey', onclick: viewNewSurvey }),
+      ]),
+      el('p', {
+        class: 'muted',
+        text: 'Small-scale mining site & miner survey, Managalas Conservation Area.',
+      }),
+      surveys.length
+        ? el('ul', { class: 'list' }, items)
+        : el('p', { class: 'empty', text: 'No surveys yet. Start one to begin an interview.' }),
+    ])
+  );
+}
+
+/* ------------------------------------------------------------ new survey -- */
+
+function viewNewSurvey() {
+  const form = el('form', {
+    class: 'form',
+    onsubmit: async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const survey = await createSurvey({
+        siteName: data.get('siteName').trim(),
+        reference: data.get('reference').trim(),
+        surveyor: data.get('surveyor').trim(),
+      });
+      // Seed the matching questions so the sheet agrees with the header.
+      await saveAnswer(survey.id, 'q3', survey.siteName);
+      if (survey.reference) await saveAnswer(survey.id, 'q1', survey.reference);
+      if (survey.surveyor) await saveAnswer(survey.id, 'o5', survey.surveyor);
+      viewSurvey(survey.id);
+    },
+  });
+
+  form.append(
+    el('label', {}, [
+      el('span', { text: 'Name of mining site (Q3)' }),
+      el('input', { name: 'siteName', required: 'required', autocomplete: 'off' }),
+    ]),
+    el('label', {}, [
+      el('span', { text: 'Survey ID (Q1)' }),
+      el('input', { name: 'reference', autocomplete: 'off' }),
+    ]),
+    el('label', {}, [
+      el('span', { text: 'Enumerator' }),
+      el('input', { name: 'surveyor', autocomplete: 'off' }),
+    ]),
+    el('div', { class: 'actions' }, [
+      el('button', { type: 'submit', class: 'primary', text: 'Start survey' }),
+      el('button', { type: 'button', text: 'Cancel', onclick: viewSurveyList }),
+    ])
+  );
+
+  show(
+    el('section', {}, [
+      backBar('Surveys', viewSurveyList),
+      el('h1', { text: 'New survey' }),
+      form,
+    ])
+  );
+}
+
+/* ------------------------------------------------------- survey contents -- */
+
+async function viewSurvey(surveyId) {
+  const survey = await getSurvey(surveyId);
+  if (!survey) return viewSurveyList();
+
+  const answers = survey.answers || {};
+  const counts = await photoCounts(surveyId);
+  const photosTaken = SUBJECTS.reduce((n, s) => n + Math.min(counts.get(s.id) || 0, s.minPhotos), 0);
+  const photosTotal = [...counts.values()].reduce((n, c) => n + c, 0);
+  const done = answeredCount(answers);
+
+  const rows = SECTIONS.map((section) => {
+    const { done: d, total } = sectionProgress(answers, section);
+    return el('li', {}, [
+      el('button', { class: 'card', onclick: () => viewSection(surveyId, section.id) }, [
+        el('div', { class: 'card-head' }, [
+          el('h2', {
+            text: section.number !== undefined ? `${section.number}. ${section.title}` : section.title,
+          }),
+          badge(d, total),
+        ]),
+        progressBar(d, total),
+      ]),
+    ]);
+  });
+
+  // Photographs sit alongside the paper sections rather than inside them: the
+  // form's observation block only asks whether photographs were taken, which
+  // this answers from the record itself.
+  rows.push(
+    el('li', {}, [
+      el('button', { class: 'card', onclick: () => viewPhotoSubjects(surveyId) }, [
+        el('div', { class: 'card-head' }, [
+          el('h2', { text: 'Photographs' }),
+          badge(photosTaken, TOTAL_MIN_PHOTOS),
+        ]),
+        progressBar(photosTaken, TOTAL_MIN_PHOTOS),
+      ]),
+    ])
+  );
+
+  show(
+    el('section', {}, [
+      backBar('Surveys', viewSurveyList),
+      el('h1', { text: survey.siteName }),
+      el('p', {
+        class: 'muted',
+        text: [survey.reference, survey.surveyor].filter(Boolean).join(' · '),
+      }),
+      el('p', { class: 'muted', text: `${done} of ${NUMBERED_COUNT} numbered questions answered` }),
+      progressBar(done, NUMBERED_COUNT),
+      el('ul', { class: 'list' }, rows),
+      el('div', { class: 'actions spread' }, [
+        el('span', {
+          class: 'muted',
+          text: `${photosTotal} photograph${photosTotal === 1 ? '' : 's'} attached`,
+        }),
+        el('div', { class: 'deliver' }, [
+          el('button', {
+            class: 'primary',
+            text: canShareFiles() ? 'Send survey + photos' : 'Download survey + photos',
+            onclick: (event) => exportSurvey(surveyId, event.currentTarget, 'share'),
+          }),
+          canShareFiles()
+            ? el('button', {
+                class: 'link-button',
+                text: 'Save to this device instead',
+                onclick: (event) => exportSurvey(surveyId, event.currentTarget, 'download'),
+              })
+            : null,
+        ]),
+      ]),
+      el('p', { class: 'muted deliver-status', id: 'deliver-status' }),
+    ])
+  );
+}
+
+/* -------------------------------------------------------------- section -- */
+
+async function viewSection(surveyId, sectionId) {
+  const survey = await getSurvey(surveyId);
+  const section = SECTIONS_BY_ID.get(sectionId);
+  if (!survey || !section) return viewSurveyList();
+
+  const answers = survey.answers || {};
+  const derived = section.id === 'observation' ? await photographsBlock(surveyId, survey) : null;
+  const index = SECTIONS.findIndex((s) => s.id === sectionId);
+  const next = SECTIONS[index + 1];
+  const previous = SECTIONS[index - 1];
+
+  const fields = section.questions.map((q) => questionField(surveyId, q, answers));
+
+  show(
+    el('section', {}, [
+      backBar(survey.siteName, () => viewSurvey(surveyId)),
+      el('p', { class: 'eyebrow', text: section.number !== undefined ? `Section ${section.number}` : 'Observation' }),
+      el('h1', { text: section.title }),
+      section.preamble ? el('p', { class: 'guidance', text: section.preamble }) : null,
+      section.note ? el('p', { class: 'muted', text: section.note }) : null,
+      el('div', { class: 'questions' }, fields),
+      derived,
+      el('div', { class: 'actions spread' }, [
+        previous
+          ? el('button', {
+              text: '← ' + (previous.number !== undefined ? `Section ${previous.number}` : previous.title),
+              onclick: () => viewSection(surveyId, previous.id),
+            })
+          : el('span', {}),
+        next
+          ? el('button', {
+              class: 'primary',
+              text: (next.number !== undefined ? `Section ${next.number}` : next.title) + ' →',
+              onclick: () => viewSection(surveyId, next.id),
+            })
+          : el('button', {
+              class: 'primary',
+              text: 'Done',
+              onclick: () => viewSurvey(surveyId),
+            }),
+      ]),
+    ])
+  );
+}
+
+/* ------------------------------------------------------ question fields -- */
+
+function questionField(surveyId, question, answers) {
+  const wrap = el('div', { class: 'question' });
+  const heading = question.n ? `${question.n}. ${question.label}` : question.label;
+  wrap.append(el('p', { class: 'q-label', text: heading }));
+
+  const save = (key, value) => saveAnswer(surveyId, key, value);
+  const current = answers[question.id];
+
+  wrap.append(control(question, question.id, current, save, () => {
+    // Re-render the section so conditional follow-ups appear or disappear.
+    viewSection(surveyId, SECTIONS.find((s) => s.questions.includes(question)).id);
+  }));
+
+  if (question.other && needsOther(question, current)) {
+    wrap.append(
+      labelled(
+        'Other — please specify',
+        textInput(answers[question.id + '_other'], (v) => save(question.id + '_other', v))
+      )
+    );
+  }
+
+  if (question.follow && followVisible(question.follow, current)) {
+    const f = question.follow;
+    const key = question.id + '_f';
+    wrap.append(
+      el('div', { class: 'follow' }, [
+        el('p', { class: 'q-label sub', text: f.label }),
+        control(f, key, answers[key], save, () =>
+          viewSection(surveyId, SECTIONS.find((s) => s.questions.includes(question)).id)
+        ),
+        f.other && needsOther(f, answers[key])
+          ? labelled(
+              'Other — please specify',
+              textInput(answers[key + '_other'], (v) => save(key + '_other', v))
+            )
+          : null,
+      ])
+    );
+  }
+
+  return wrap;
+}
+
+function needsOther(question, value) {
+  if (!question.other) return false;
+  return Array.isArray(value) ? value.includes('Other') : value === 'Other';
+}
+
+function followVisible(follow, value) {
+  if (!follow.when) return true;
+  return Array.isArray(value) ? value.some((v) => follow.when.includes(v)) : follow.when.includes(value);
+}
+
+function labelled(text, node) {
+  return el('label', { class: 'inline-field' }, [el('span', { text }), node]);
+}
+
+function textInput(value, onSave, type = 'text') {
+  const input = el('input', { type, inputmode: type === 'number' ? 'decimal' : null });
+  input.value = value ?? '';
+  input.addEventListener('change', () => onSave(input.value.trim()));
+  return input;
+}
+
+function control(question, key, value, save, rerender) {
+  switch (question.type) {
+    case 'textarea': {
+      const area = el('textarea', { rows: '3' });
+      area.value = value ?? '';
+      area.addEventListener('change', () => save(key, area.value.trim()));
+      return area;
+    }
+
+    case 'number': {
+      const field = el('div', { class: 'with-unit' }, [textInput(value, (v) => save(key, v), 'number')]);
+      if (question.unit) field.append(el('span', { class: 'unit', text: question.unit }));
+      return field;
+    }
+
+    case 'date':
+      return textInput(value, (v) => save(key, v), 'date');
+
+    case 'single':
+      return el(
+        'div',
+        { class: 'options' },
+        question.options.map((option) => {
+          const input = el('input', { type: 'radio', name: key });
+          input.checked = value === option;
+          input.addEventListener('change', async () => {
+            await save(key, option);
+            rerender();
+          });
+          return el('label', { class: 'option' }, [input, el('span', { text: option })]);
+        })
+      );
+
+    case 'multi': {
+      const chosen = Array.isArray(value) ? value : [];
+      return el(
+        'div',
+        { class: 'options' },
+        question.options.map((option) => {
+          const input = el('input', { type: 'checkbox' });
+          input.checked = chosen.includes(option);
+          input.addEventListener('change', async () => {
+            const set = new Set(Array.isArray(value) ? value : []);
+            input.checked ? set.add(option) : set.delete(option);
+            await save(key, question.options.filter((o) => set.has(o)));
+            rerender();
+          });
+          return el('label', { class: 'option' }, [input, el('span', { text: option })]);
+        })
+      );
+    }
+
+    case 'group': {
+      const held = value && typeof value === 'object' ? value : {};
+      return el(
+        'div',
+        { class: 'group' },
+        question.fields.map((f) =>
+          labelled(
+            f.label,
+            textInput(held[f.key], (v) => {
+              const updated = { ...held, [f.key]: v };
+              Object.keys(updated).forEach((k) => updated[k] === '' && delete updated[k]);
+              save(key, updated);
+            }, f.type === 'number' ? 'number' : 'text')
+          )
+        )
+      );
+    }
+
+    default:
+      return textInput(value, (v) => save(key, v));
+  }
+}
+
+/**
+ * The paper form's observation page asks "Photographs taken: Yes/No" and for a
+ * list of photo IDs. Both are facts about the record rather than judgements, so
+ * they are derived here instead of typed — which also keeps the IDs in the
+ * answer sheet identical to the filenames in the export.
+ */
+async function photographsBlock(surveyId, survey) {
+  const photos = await listPhotos(surveyId);
+  const ids = photoIds(survey, photos);
+
+  const listed = SUBJECTS.map((subject) => {
+    const mine = photos
+      .filter((p) => p.locationId === subject.id)
+      .sort((a, b) => a.takenAt - b.takenAt)
+      .map((p) => ids.get(p.id));
+    if (!mine.length) return null;
+    return el('li', {}, [
+      el('span', { class: 'id-subject', text: subject.name }),
+      el('span', { class: 'id-list', text: mine.join(', ') }),
+    ]);
+  }).filter(Boolean);
+
+  return el('div', { class: 'question derived' }, [
+    el('p', { class: 'q-label', text: 'Photographs taken' }),
+    el('p', {
+      class: photos.length ? 'ok' : 'warn',
+      text: photos.length
+        ? `Yes — ${photos.length} photograph${photos.length === 1 ? '' : 's'}`
+        : 'No',
+    }),
+    el('p', { class: 'q-label sub', text: 'Photo IDs' }),
+    photos.length
+      ? el('ul', { class: 'id-list-wrap' }, listed)
+      : el('p', { class: 'muted', text: 'None recorded.' }),
+    el('p', {
+      class: 'muted',
+      text: 'Derived from the photographs attached to this survey. These IDs are the filenames in the export.',
+    }),
+    el('button', { text: 'Go to photographs', onclick: () => viewPhotoSubjects(surveyId) }),
+  ]);
+}
+
+/* ----------------------------------------------------------- photographs -- */
+
+async function viewPhotoSubjects(surveyId) {
+  const survey = await getSurvey(surveyId);
+  if (!survey) return viewSurveyList();
+  const counts = await photoCounts(surveyId);
+
+  const rows = SUBJECTS.map((subject) => {
+    const count = counts.get(subject.id) || 0;
+    return el('li', {}, [
+      el('button', { class: 'card', onclick: () => viewSubject(surveyId, subject.id) }, [
+        el('div', { class: 'card-head' }, [
+          el('h2', { text: subject.name }),
+          badge(count, subject.minPhotos, 'photos'),
+        ]),
+        progressBar(count, subject.minPhotos),
+      ]),
+    ]);
+  });
+
+  const outstanding = SUBJECTS.filter((s) => (counts.get(s.id) || 0) < s.minPhotos);
+
+  show(
+    el('section', {}, [
+      backBar(survey.siteName, () => viewSurvey(surveyId)),
+      el('h1', { text: 'Photographs' }),
+      outstanding.length
+        ? el('p', {
+            class: 'warn',
+            text: `${outstanding.length} subject${outstanding.length === 1 ? '' : 's'} still below the required photo count.`,
+          })
+        : el('p', { class: 'ok', text: 'All subjects have their required photographs.' }),
+      el('ul', { class: 'list' }, rows),
+    ])
+  );
+}
+
+async function viewSubject(surveyId, subjectId) {
+  const survey = await getSurvey(surveyId);
+  const subject = SUBJECTS_BY_ID.get(subjectId);
+  if (!survey || !subject) return viewSurveyList();
+
+  const photos = await listPhotos(surveyId, subjectId);
+  const ids = photoIds(survey, await listPhotos(surveyId));
+  const remaining = Math.max(0, subject.minPhotos - photos.length);
+
+  const input = el('input', {
+    type: 'file',
+    accept: 'image/*',
+    capture: 'environment',
+    multiple: 'multiple',
+    class: 'hidden-input',
+    id: 'photo-input',
+    onchange: async (event) => {
+      const files = [...event.target.files];
+      event.target.value = '';
+      for (const file of files) {
+        const image = await prepare(file);
+        await addPhoto({ surveyId, locationId: subjectId, ...image });
+      }
+      viewSubject(surveyId, subjectId);
+    },
+  });
+
+  const grid = el(
+    'ul',
+    { class: 'grid' },
+    photos.map((photo, index) =>
+      el('li', {}, [
+        el('button', {
+          class: 'shot',
+          'aria-label': `View photograph ${index + 1} full size`,
+          onclick: () => openViewer(photos, index, ids),
+        }, [
+          el('img', {
+            src: objectUrl(photo.thumb || photo.blob),
+            alt: `${subject.name}, photograph ${index + 1} of ${photos.length}`,
+            loading: 'lazy',
+          }),
+        ]),
+        el('span', { class: 'dims', text: ids.get(photo.id) || '' }),
+        el('button', {
+          class: 'remove',
+          text: '×',
+          'aria-label': `Delete photograph ${index + 1}`,
+          onclick: async () => {
+            await deletePhoto(photo.id);
+            viewSubject(surveyId, subjectId);
+          },
+        }),
+      ])
+    )
+  );
+
+  const notes = el('textarea', { class: 'notes', rows: '4', placeholder: 'Observations for this subject' });
+  notes.value = (survey.notes && survey.notes[subjectId]) || '';
+  notes.addEventListener('change', async () => {
+    const fresh = await getSurvey(surveyId);
+    fresh.notes = fresh.notes || {};
+    fresh.notes[subjectId] = notes.value;
+    await updateSurvey(fresh);
+  });
+
+  show(
+    el('section', {}, [
+      backBar('Photographs', () => viewPhotoSubjects(surveyId)),
+      el('h1', { text: subject.name }),
+      badge(photos.length, subject.minPhotos, 'photos'),
+      progressBar(photos.length, subject.minPhotos),
+      remaining
+        ? el('p', {
+            class: 'warn',
+            text: `${remaining} more photograph${remaining === 1 ? '' : 's'} required here.`,
+          })
+        : el('p', { class: 'ok', text: 'Minimum photographs met.' }),
+      el('p', { class: 'guidance', text: subject.guidance }),
+      input,
+      el('label', { class: 'primary capture', for: 'photo-input', text: 'Take photographs' }),
+      photos.length ? grid : el('p', { class: 'empty', text: 'No photographs yet.' }),
+      el('h2', { text: 'Notes' }),
+      notes,
+    ])
+  );
+}
+
+/* --------------------------------------------------------- photo viewer -- */
+
+function openViewer(photos, startIndex, ids = new Map()) {
+  let index = startIndex;
+  let url = null;
+
+  const image = el('img', { class: 'viewer-image', alt: '' });
+  const caption = el('p', { class: 'viewer-caption' });
+
+  const draw = () => {
+    if (url) revoke(url);
+    const photo = photos[index];
+    url = detachedUrl(photo.blob);
+    image.src = url;
+    image.alt = `Photograph ${index + 1} of ${photos.length}, full size`;
+    caption.textContent =
+      (ids.get(photo.id) ? ids.get(photo.id) + ' · ' : '') +
+      `${index + 1} of ${photos.length}` +
+      (photo.width ? ` · ${photo.width}×${photo.height}` : '') +
+      ` · ${Math.round(photo.blob.size / 1024)} KB`;
+  };
+
+  const close = () => {
+    if (url) revoke(url);
+    document.removeEventListener('keydown', onKey);
+    overlay.remove();
+  };
+
+  const step = (by) => {
+    index = (index + by + photos.length) % photos.length;
+    draw();
+  };
+
+  function onKey(event) {
+    if (event.key === 'Escape') close();
+    if (event.key === 'ArrowRight') step(1);
+    if (event.key === 'ArrowLeft') step(-1);
+  }
+
+  const overlay = el('div', { class: 'viewer', role: 'dialog', 'aria-modal': 'true' }, [
+    el('div', { class: 'viewer-bar' }, [
+      caption,
+      el('button', { class: 'viewer-close', text: 'Close', onclick: close }),
+    ]),
+    image,
+    photos.length > 1
+      ? el('div', { class: 'viewer-nav' }, [
+          el('button', { text: '‹ Previous', onclick: () => step(-1) }),
+          el('button', { text: 'Next ›', onclick: () => step(1) }),
+        ])
+      : null,
+  ]);
+
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) close();
+  });
+  document.addEventListener('keydown', onKey);
+  draw();
+  document.body.append(overlay);
+}
+
+/* ------------------------------------------------------------- delivery -- */
+
+async function exportSurvey(surveyId, button, mode) {
+  const status = document.getElementById('deliver-status');
+  const label = button && button.textContent;
+  const say = (text, kind = 'muted deliver-status') => {
+    if (status) {
+      status.className = kind;
+      status.textContent = text;
+    }
+  };
+
+  if (button) {
+    button.disabled = true;
+    button.textContent = 'Packaging…';
+  }
+  say('Building the bundle — large photo sets take a moment.');
+
+  try {
+    const survey = await getSurvey(surveyId);
+    const photos = await listPhotos(surveyId);
+    const bundle = await buildBundle(survey, photos);
+    const size = (bundle.blob.size / (1024 * 1024)).toFixed(1);
+    const summary = `${bundle.filename} · ${size} MB · ${photos.length} photograph${
+      photos.length === 1 ? '' : 's'
+    }`;
+
+    if (mode === 'download') {
+      download(bundle.blob, bundle.filename);
+      say(`Saved to this device — ${summary}`, 'ok deliver-status');
+      return;
+    }
+
+    const outcome = await deliver(bundle);
+    if (outcome === 'shared') say(`Sent — ${summary}`, 'ok deliver-status');
+    else if (outcome === 'cancelled') say('Sending cancelled. Nothing left the device.');
+    else say(`Saved to this device — ${summary}`, 'ok deliver-status');
+  } catch (error) {
+    say(`Could not build the bundle: ${error.message}`, 'warn deliver-status');
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = label;
+    }
+  }
+}
+
+viewSurveyList();
+  </script>
+</body>
+</html>

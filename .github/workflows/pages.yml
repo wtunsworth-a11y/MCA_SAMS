@@ -1,0 +1,46 @@
+name: Deploy PWA to GitHub Pages
+
+# OPTIONAL — an Actions-based way to publish the app to GitHub Pages.
+#
+# The simplest way to get a link needs no Actions at all: in the repo,
+# Settings -> Pages -> "Deploy from a branch", pick this branch and the
+# "/ (root)" folder. See docs/SUPERVISOR_GUIDE.md.
+#
+# Prefer the Actions route (e.g. so Pages tracks the default branch)? In
+# Settings -> Pages set Source = "GitHub Actions", then run this workflow
+# from the Actions tab ("Run workflow"). It is manual-only so it never spams
+# failed runs before Pages has been switched on for the first time.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
